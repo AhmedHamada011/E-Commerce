@@ -1,0 +1,56 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-container{
+    background-color: #EFEFEF;
+}
+
+.login-mini{
+    font-size: .8rem;
+}
+
+#loginBtn{
+    color: #EFEFEF;
+}
+
+#loginBtn:hover,
+#login-signup:hover 
+{
+    opacity: .7;
+}
+
+#login-forgetpass:hover{
+    text-decoration: underline !important;
+}
+
+#login-or{
+    position: relative;
+    
+}
+
+#login-or::after{
+
+    content: "";
+    height: 2px;
+    width: 47%;
+    background-color: black;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+
+}
+
+#login-or::before{
+
+    content: "";
+    height: 2px;
+    width: 47%;
+    background-color: black;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+}

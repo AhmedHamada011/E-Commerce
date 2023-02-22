@@ -6,9 +6,7 @@
     
     
 }
-.signup-body{
-    background-color: var(--dark);
-}
+
 .signup.container{
     max-width: 600px;
     background-color: var(--light);
@@ -22,11 +20,6 @@
     color: var(--light);
 }
 
-.signup-login-btn:hover{
-    display: block;
-    letter-spacing: 2px;
-    background-color: var(--light);
-    margin: 0 auto;
-}
+
 
 

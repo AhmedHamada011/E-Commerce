@@ -15,14 +15,15 @@ loginForm.addEventListener('submit' , function(event){
 
     if(loginEmail.value === validEmail && loginPassword.value === validPassword){
 
-        loginForm.setAttribute('action', './nav.html' )
+        loginForm.setAttribute('action', '../index.html' )
         loginForm.setAttribute('method', 'GET' )
+        localStorage.setItem("token","true")
         warningWord.style.display = 'none';
 
     }else{
         warningWord.style.display = 'block'
         event.preventDefault()
     }
- 
+
 })
 

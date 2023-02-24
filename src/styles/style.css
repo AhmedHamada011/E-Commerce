@@ -3,6 +3,7 @@
 @import "nav.css";
 @import "signup.css";
 @import "login.css";
+@import "home.css";
   *{
     font-family: 'Roboto', sans-serif;
 }

@@ -6,21 +6,24 @@
 
 ifUserLoggedIn()
 //continue adding page later
-if(document.title=="men section"){
+if(document.title=="men section"){//add products to men page
     getMenProducts()
-}else if(document.title=="women section"){
+}else if(document.title=="women section"){//add products to women page
+    getwomenProducts()
+}else if(document.title=="shop"){//add products of men and women to shop
+    getMenProducts()
     getwomenProducts()
 }
 
 function getMenProducts(){
-    getProducts("mens-shirts","collapseOne")
-    getProducts("tops","collapseTwo")
-    getProducts("mens-shoes","collapseThree")
+    getProducts("mens-shirts","men-collapseOne",true)
+    getProducts("tops","men-collapseTwo",false)
+    getProducts("mens-shoes","men-collapseThree",false)
 }
 function getwomenProducts(){
-    getProducts("womens-dresses","collapseOne")
-    getProducts("womens-shoes","collapseTwo")
-    getProducts("womens-bags","collapseThree")
+    getProducts("womens-dresses","women-collapseOne",true)
+    getProducts("womens-shoes","women-collapseTwo",false)
+    getProducts("womens-bags","women-collapseThree",false)
 }
 
 
@@ -63,10 +66,10 @@ function logOut(){
     location.href=location.origin+"/index.html" //important change to index.html after index.html is created
 }
 
-function getProducts(product,collapseId){
+function getProducts(product,collapseId,isOpen){
     
     // let cardHolder=document.querySelector(`#accordionExample #${section} .accordion-body`)mid_section
-    addAccordion(product,collapseId)
+    addAccordion(product,collapseId,isOpen)
 
     // console.log("before",cardHolder);
 
@@ -82,41 +85,16 @@ function getProducts(product,collapseId){
     sessionStorage.setItem("products",res.products)
     return res;
 })
-// .then(res=>{
-//         // console.log(res)
-//         document.querySelectorAll("#accordionExample #collapseOne .accordion-body .product").forEach(product => {
-//             let id=product.id;
-//             let timeInt;
-//             const img=product.querySelector("img")
-//             img.addEventListener("mouseover",function(e){
-//                 sessionStorage.getItem("products").forEach(item=>{
-//                     if(item.id=id){
-//                         let count=0;
-//                         timeInt=setInterval(function(){
-//                             e.target.src=item.images[count++>item.images.length?0:count]
-//                         },500)
-//                     }
-//                 })
-//             })
-//             img.addEventListener("mouseout",function(e){
-//                 res.products.forEach(item=>{
-//                     if(item.id=id){
-//                         clearInterval(timeInt)
-//                         e.target.src=item.thumbnail;
-//                     }
-//                 })
-//             })
-//         })
-//     }) 
+
 }
 
-
-function addAccordion(product,collapseId){
+//add accordion take product name collapse Id and is collapse open od closed
+function addAccordion(product,collapseId,isOpen){
     let accordion=`
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#${collapseId}" aria-expanded="true" aria-controls="${collapseId}">
+                    data-bs-target="#${collapseId}" aria-expanded="${isOpen}" aria-controls="${collapseId}">
                     <h3>${product.replace("-"," ")}</h3>
                 </button>
             </h2>
@@ -131,7 +109,7 @@ function addAccordion(product,collapseId){
     document.querySelector(`#accordionExample`).innerHTML+=accordion;
 }
 
-
+//add products to accordion
 function addProductItem(element,collapseId){
     let cardHolder=document.querySelector(`#${collapseId} .accordion-body`);
 
@@ -150,7 +128,5 @@ function addProductItem(element,collapseId){
                 </div>
             </div>
         </div>`
-        // console.log(cardHolder);
-
         cardHolder.innerHTML+=card;
 }

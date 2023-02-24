@@ -15,7 +15,7 @@ loginForm.addEventListener('submit' , function(event){
 
     if(loginEmail.value === validEmail && loginPassword.value === validPassword){
 
-        loginForm.setAttribute('action', '../index.html' )
+        loginForm.setAttribute('action', '../../index.html' )
         loginForm.setAttribute('method', 'GET' )
         localStorage.setItem("token","true")
         warningWord.style.display = 'none';

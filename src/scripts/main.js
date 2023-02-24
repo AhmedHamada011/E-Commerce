@@ -5,6 +5,7 @@
 // check if user is logged using token if yes goto home page else login
 
 ifUserLoggedIn()
+
 //continue adding page later
 if(document.title=="men section"){//add products to men page
     getMenProducts()
@@ -28,7 +29,7 @@ function getwomenProducts(){
 
 
 
-// getProducts("womens-dresses")
+
 
 
 // check if user is logged using token if yes goto home page else login
@@ -47,12 +48,13 @@ function isLoggedIn(){
     }
 }
 
+// check if user is logged in 
 
 function ifUserLoggedIn(){
     let logOutBtn=`<button class="d-none d-md-block" id="nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>`;
     if(isLoggedIn()){
         document.querySelector(".nav-main.d-none.d-md-flex >div >ul").innerHTML+=logOutBtn
-        logOutBtn=document.getElementById("nav-logOut").addEventListener("click",function(){
+        logOutBtn=document.getElementById("nav-logOut").addEventListener("click",function(){ // add event to log ou button
             logOut();
         })
 
@@ -60,12 +62,12 @@ function ifUserLoggedIn(){
     }
 
 }
-
+//log out the user when he clicks on log out button
 function logOut(){
     localStorage.setItem("token","false")
     location.href=location.origin+"/index.html" //important change to index.html after index.html is created
 }
-
+//get proucts from api and adds it to page
 function getProducts(product,collapseId,isOpen){
     
     // let cardHolder=document.querySelector(`#accordionExample #${section} .accordion-body`)mid_section

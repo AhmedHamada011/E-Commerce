@@ -12,7 +12,7 @@ totopBtn.addEventListener('click' , function(){
 
 window.addEventListener('scroll' , function(){
 
-    this.scrollY >= 500 ? totopBtn.style.display = 'block'  : totopBtn.style.display = 'none' ;
+    this.scrollY >= 500 ? totopBtn.style.display = 'block'  : totopBtn.style.display = 'none';
 })
 
 
@@ -44,7 +44,7 @@ links.forEach(element=>{
 
 function getLocation(){
     if(navigator.geolocation){
-       
+
         navigator.geolocation.watchPosition(showPosition);
     }else{
         let ourLocation = document.getElementById('ourLocation')
@@ -103,22 +103,21 @@ contactForm.addEventListener('submit',function(e){
 
 
 let saleImgs = document.querySelectorAll('#home-sale div img');
-
 saleImgs.forEach(element=>{
     element.addEventListener("click" , function(e){
         // go to where
     })
 
     element.addEventListener('mouseover' , function(e){
-
        e.target.parentElement.children[0].classList.add('apper')
 
-    //    e.target.parentElement.children[0].addEventListener('mouseover' , function(){
-                
-    //         this.style.color = 'red'
+       e.target.parentElement.children[0].addEventListener('mouseover' , function(event){
+        event.stopImmediatePropagation();
+            console.log(event.target);
+            event.target.style.color = 'red'
 
 
-    //    })
+       })
        e.target.parentElement.children[0].addEventListener('click' , function(){
 
        })

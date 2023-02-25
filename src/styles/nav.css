@@ -35,10 +35,10 @@ ul {
     list-style: none;
 }
 
-#nav-logOut{
+#nav-logOut,#mobile-nav-logOut{
     background:transparent; 
     border:none;    
 }
-#nav-logOut:hover i{
+#nav-logOut:hover i,#mobile-nav-logOut:hover *{
     color: red !important; 
 }

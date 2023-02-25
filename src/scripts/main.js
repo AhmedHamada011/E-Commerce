@@ -7,22 +7,22 @@
 ifUserLoggedIn()
 
 //continue adding page later
-if(document.title=="men section"){//add products to men page
-    getMenProducts()
-}else if(document.title=="women section"){//add products to women page
-    getwomenProducts()
-}else if(document.title=="shop"){//add products of men and women to shop
-    getMenProducts()
-    getwomenProducts()
-}
+// if(document.title=="men section"){//add products to men page
+//     getMenProducts()
+// }else if(document.title=="women section"){//add products to women page
+//     getWomenProducts()
+// }else if(document.title=="shop"){//add products of men and women to shop
+//     getMenProducts()
+//     getWomenProducts()
+// }
 
 
-function getMenProducts(){
+export function getMenProducts(){
     getProducts("mens-shirts","men-collapseOne",true)
     getProducts("tops","men-collapseTwo",false)
     getProducts("mens-shoes","men-collapseThree",false)
 }
-function getwomenProducts(){
+export function getWomenProducts(){
     getProducts("womens-dresses","women-collapseOne",true)
     getProducts("womens-shoes","women-collapseTwo",false)
     getProducts("womens-bags","women-collapseThree",false)
@@ -34,7 +34,7 @@ function getwomenProducts(){
 
 
 // check if user is logged using token if yes goto home page else login
-function isLoggedIn(){
+export function isLoggedIn(){
     if(localStorage.getItem("token")=="true"){
         if(location.href.endsWith("signuppage.html") || (location.href.endsWith("loginpage.html"))){
             location.href=location.origin+"/index.html" //important change to index.html after index.html is created
@@ -55,6 +55,12 @@ function ifUserLoggedIn(){
     let logOutBtn=`<button class="d-none d-md-block" id="nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>`;
     if(isLoggedIn()){
         document.querySelector(".nav-main.d-none.d-md-flex >div >ul").innerHTML+=logOutBtn
+        document.querySelector(".offcanvas-body > ul .log-out").innerHTML=`<button  id="mobile-nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket mx-0 me-1"></i>logout</button>`;
+
+        document.getElementById("mobile-nav-logOut").addEventListener("click",function(){ // add event to log ou button
+            logOut();
+        })
+
         logOutBtn=document.getElementById("nav-logOut").addEventListener("click",function(){ // add event to log ou button
             logOut();
         })
@@ -150,21 +156,18 @@ function addProductItem(element,collapseId){
 
 function addEventModal(id){
     let product=document.querySelector(`.btn-${id}`);
-    console.log(product);
+    // console.log(product);
 
     product.addEventListener("click",function(e){
-        console.log("asdasdas",product);
+        // console.log("asdasdas",product);
 
         // let id=product.closest(".product").id;
 
         let productDataObject=JSON.parse(sessionStorage.getItem(id));
-        console.log(productDataObject);
-        document.querySelector(".modal-title").innerText=productDataObject.title;
-        document.querySelector(".modal-price").innerText=`price: ${productDataObject.price}$`;
-        document.querySelector(".modal-desc").innerText=`description: ${productDataObject.description}`;
-        document.querySelector(".modal-brand").innerText=`brand: ${productDataObject.brand}`;
-        document.querySelector(".modal-category").innerText=`category: ${productDataObject.category}`;
-        document.querySelector(".modal-stock").innerText=`in stock: ${productDataObject.stock}`;
+
+        // console.log(productDataObject);
+        
+        changeModalData(productDataObject)
 
 
         let carousel_indicator=document.querySelector(".carousel-indicators")
@@ -182,6 +185,7 @@ function addEventModal(id){
             <img src="${img}" class="d-block w-100" alt="...">
             </div>`
         })
+
         document.querySelector(".carousel-item").classList.add("active")
         carousel_indicator.firstElementChild.classList.add("active")
         carousel_indicator.firstElementChild.setAttribute("aria-current","true")
@@ -193,3 +197,11 @@ function addEventModal(id){
 
 
 
+function changeModalData(productData){
+    document.querySelector(".modal-title").innerText=productData.title;
+    document.querySelector(".modal-price").innerText=`price: ${productData.price}$`;
+    document.querySelector(".modal-desc").innerText=`description: ${productData.description}`;
+    document.querySelector(".modal-brand").innerText=`brand: ${productData.brand}`;
+    document.querySelector(".modal-category").innerText=`category: ${productData.category}`;
+    document.querySelector(".modal-stock").innerText=`in stock: ${productData.stock}`;
+}

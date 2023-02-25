@@ -104,7 +104,7 @@ function addAccordion(product,collapseId,isOpen){
     let accordion=`
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button text-light bg-dark" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button text-light bg-dark ${isOpen?"":"collapsed"}" type="button" data-bs-toggle="collapse"
                     data-bs-target="#${collapseId}" aria-expanded="${isOpen}" aria-controls="${collapseId}">
                     <h3>${product.replace("-"," ")}</h3>
                 </button>

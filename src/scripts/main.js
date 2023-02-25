@@ -173,6 +173,7 @@ function addEventModal(id){
         carousel_inner.innerHTML=""
         carousel_indicator.innerHTML=""
         let count=0;
+        productDataObject.images.reverse();
         productDataObject.images.forEach(img=>{
             
             carousel_indicator.innerHTML+=`<button class="bg-primary" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${count++}" aria-label="Slide ${count}"></button>`

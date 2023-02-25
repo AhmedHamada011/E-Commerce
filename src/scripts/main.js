@@ -16,6 +16,7 @@ if(document.title=="men section"){//add products to men page
     getwomenProducts()
 }
 
+
 function getMenProducts(){
     getProducts("mens-shirts","men-collapseOne",true)
     getProducts("tops","men-collapseTwo",false)
@@ -74,18 +75,26 @@ function getProducts(product,collapseId,isOpen){
     addAccordion(product,collapseId,isOpen)
 
     // console.log("before",cardHolder);
-
+    // let link=`https://dummyjson.com/products/category/${product}`
     fetch(`https://dummyjson.com/products/category/${product}`)
     .then(res => 
         res.json() 
     )
     .then(res => {
+        // console.log(res);
         res.products.forEach(element => {
             addProductItem(element,collapseId)
-        
+            // console.log(element.id)
+        sessionStorage.setItem(`${element.id}`,JSON.stringify(element))
+
     })
-    sessionStorage.setItem("products",res.products)
+
     return res;
+}).then(res=>{
+    res.products.forEach(element=>{
+        addEventModal(element.id);
+
+    })
 })
 
 }
@@ -95,7 +104,7 @@ function addAccordion(product,collapseId,isOpen){
     let accordion=`
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                <button class="accordion-button text-light bg-dark" type="button" data-bs-toggle="collapse"
                     data-bs-target="#${collapseId}" aria-expanded="${isOpen}" aria-controls="${collapseId}">
                     <h3>${product.replace("-"," ")}</h3>
                 </button>
@@ -117,8 +126,9 @@ function addProductItem(element,collapseId){
 
     let card=
         `<div class="product p-1 d-flex align-items-stretch" id="${element.id}">
-            <div class="card d-flex">
-                <img src="${element.thumbnail}" class="thumbnail card-img-top" alt="...">
+            <div class="card d-flex bg-light">
+            
+            <button class="product-modal-btn btn-${element.id}" type="button"data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="${element.thumbnail}" class="thumbnail card-img-top" alt="..."></button>
                 <div class="men_section_thumbnails card-body col d-flex flex-column justify-content-end gap-2">
                     <p class="card-text m-0" id="men_section_title h2">${element.title}</p>
                     <p class="card-text m-0" id="men_section_id">id: ${element.id}</p>
@@ -126,9 +136,59 @@ function addProductItem(element,collapseId){
                     <p class="card-text m-0" id="men_section_size">size: ${element.Size||"medium"}</p>
                     <p class="card-text m-0" id="men_section_price">price: ${element.price}$</p>
                     <input class="input-number" type="number" placeholder="Qty" min="1" style="width:80px">
-                    <button class=" btn btn-primary"><i class="fa-solid fa-cart-shopping"></i> add to cart</button>
+                    <button class=" btn btn-dark"><i class="fa-solid fa-cart-shopping"></i> add to cart</button>
                 </div>
             </div>
         </div>`
+        // console.log(document.querySelector(`.btn-${element.id}`));
+        
         cardHolder.innerHTML+=card;
+        // console.log(document.querySelector(`.btn-${element.id}`));
+        let item=document.querySelector(`.btn-${element.id}`);
 }
+
+
+function addEventModal(id){
+    let product=document.querySelector(`.btn-${id}`);
+    console.log(product);
+
+    product.addEventListener("click",function(e){
+        console.log("asdasdas",product);
+
+        // let id=product.closest(".product").id;
+
+        let productDataObject=JSON.parse(sessionStorage.getItem(id));
+        console.log(productDataObject);
+        document.querySelector(".modal-title").innerText=productDataObject.title;
+        document.querySelector(".modal-price").innerText=`price: ${productDataObject.price}$`;
+        document.querySelector(".modal-desc").innerText=`description: ${productDataObject.description}`;
+        document.querySelector(".modal-brand").innerText=`brand: ${productDataObject.brand}`;
+        document.querySelector(".modal-category").innerText=`category: ${productDataObject.category}`;
+        document.querySelector(".modal-stock").innerText=`in stock: ${productDataObject.stock}`;
+
+
+        let carousel_indicator=document.querySelector(".carousel-indicators")
+        let carousel_inner=document.querySelector(".carousel-inner")
+
+        carousel_inner.innerHTML=""
+        carousel_indicator.innerHTML=""
+        let count=0;
+        productDataObject.images.forEach(img=>{
+            
+            carousel_indicator.innerHTML+=`<button class="bg-primary" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${count++}" aria-label="Slide ${count}"></button>`
+            carousel_inner.innerHTML+=
+            `<div class="carousel-item">
+            <img src="${img}" class="d-block w-100" alt="...">
+            </div>`
+        })
+        document.querySelector(".carousel-item").classList.add("active")
+        carousel_indicator.firstElementChild.classList.add("active")
+        carousel_indicator.firstElementChild.setAttribute("aria-current","true")
+
+
+    })
+
+}
+
+
+

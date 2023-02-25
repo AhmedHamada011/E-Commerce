@@ -54,8 +54,8 @@ function getLocation(){
 
 function showPosition(){
 
-    let long = 29.964300;
-    let lat = 31.217340;
+    let long = 29.923770;
+    let lat = 31.216270;
 
     location.assign("http://maps.google.com/maps?q" + lat + ",+" + long);
 }
@@ -65,6 +65,7 @@ function showPosition(){
 
 let contactEmailInput = document.querySelector('#email-input');
 let contactForm = document.querySelector('#home-contact form')
+
 
 
 function emailValidation (value){
@@ -103,30 +104,77 @@ contactForm.addEventListener('submit',function(e){
 
 
 let saleImgs = document.querySelectorAll('#home-sale div img');
+
+console.log(saleImgs)
+
 saleImgs.forEach(element=>{
-    element.addEventListener("click" , function(e){
-        // go to where
-    })
 
     element.addEventListener('mouseover' , function(e){
+
        e.target.parentElement.children[0].classList.add('apper')
 
        e.target.parentElement.children[0].addEventListener('mouseover' , function(event){
-        event.stopImmediatePropagation();
-            console.log(event.target);
-            event.target.style.color = 'red'
-
+        
+            event.target.classList.add('heart-color')
 
        })
-       e.target.parentElement.children[0].addEventListener('click' , function(){
 
+       e.target.parentElement.children[0].addEventListener('mouseout' , function(event){
+
+        event.target.classList.remove('heart-color')
+
+       })
+       
+       e.target.parentElement.children[0].addEventListener('click' ,function(event){
+
+                event.target.style.color = 'red';
+        
        })
 
     })
 
-    element.addEventListener('mouseout' , function(e){
+   // insert info of product inside the modal
 
-        e.target.parentElement.children[0].classList.remove('apper')
+    element.addEventListener('click' , function(e){
+
+        let productDetails = e.target.parentElement.children[2];
+
+        let productImgModal = document.querySelector('.modal-body img')
+        productImgModal.setAttribute('src' ,e.target.getAttribute('src') )
+
+        let productNameModal = document.querySelector('.modal-body div h4')
+        productNameModal.innerText = productDetails.firstElementChild.innerText;
+
+        let productPriceModal = document.querySelector('.modal-body div h6');
+        productPriceModal.innerText = productDetails.lastElementChild.firstElementChild.innerText ;
 
     })
 })
+
+
+let secondSectionLinks = document.querySelectorAll('.btn-origin')
+
+secondSectionLinks.forEach(element=>{
+    element.addEventListener('click' , function(){
+        location.assign('http://127.0.0.1:5500/src/pages/mensectionpage.html')
+    })
+})
+
+
+// fetch data from server and put it in sale section
+
+// fetch('https://taobao-api.p.rapidapi.com/api')
+// .then((response)=>{
+
+//     if(response.ok === false){
+//         throw new Error(response.status)
+//     }else{
+//         return response.json()
+//     }
+// })
+// .then((data)=>{
+//     console.log(data.data[0])
+// })
+// .catch(err=>{
+//     console.log(err)
+// })

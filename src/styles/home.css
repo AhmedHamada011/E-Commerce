@@ -97,12 +97,16 @@
     top: 2%;
     right: 8%;
     font-size: 1.5rem ;
-    color: #EFEFEF; 
+    color: #cecece; 
     cursor: pointer; 
 }
 
 .apper{
     display: block;
+}
+
+.heart-color{
+    color: red;
 }
 
 .colorful{

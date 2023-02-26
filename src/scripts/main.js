@@ -115,7 +115,7 @@ function getProducts(product,collapseId,isOpen){
         res.products.forEach(element => {
             addProductItem(element,collapseId)
             // console.log(element.id)
-        sessionStorage.setItem(`${element.id}`,JSON.stringify(element))
+            sessionStorage.setItem(`${element.id}`,JSON.stringify(element))
 
     })
 
@@ -127,12 +127,25 @@ function getProducts(product,collapseId,isOpen){
 
     })
 }).then(()=>{
-    document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
-        btn.onclick =function(e){
-            let data=getProductId(this);
-            addToCart(data.id,data.qty)
-        }
-    })
+    if(localStorage.getItem("token")=="true"){
+        document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
+            btn.onclick =function(e){
+                let data=getProductId(this);
+                addToCart(data.id,data.qty)
+                
+            }
+        })
+    }else{
+        loginBeforeAddToCartModal();
+        document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
+                btn.setAttribute("data-bs-target","#warning-modal")
+                btn.setAttribute("data-bs-toggle","modal")
+                document.querySelector(".modal-login").addEventListener("click",function(){
+                    location.href=location.origin+"/src/pages/loginpage.html"
+                })
+            
+        })
+    }
 })
 
 }
@@ -166,7 +179,7 @@ function addProductItem(element,collapseId){
         `<div class="product p-1 d-flex align-items-stretch" id="${element.id}">
             <div class="card d-flex bg-light">
             
-            <button class="product-modal-btn btn-${element.id}" type="button"data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="${element.thumbnail}" class="thumbnail card-img-top" alt="..."></button>
+            <button class="product-modal-btn btn-${element.id}" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="${element.thumbnail}" class="thumbnail card-img-top" alt="..."></button>
                 <div class="men_section_thumbnails card-body col d-flex flex-column justify-content-end gap-2">
                     <p class="card-text m-0 product_title h2">${element.title}</p>
                     <p class="card-text m-0 product_id" data-id="${element.id}">id: ${element.id}</p>
@@ -197,7 +210,7 @@ function addEventModal(id){
 
         let productDataObject=JSON.parse(sessionStorage.getItem(id));
 
-        // console.log(productDataObject);
+        console.log(productDataObject);
         
         changeModalData(productDataObject)
 
@@ -302,4 +315,26 @@ function getLocal(){
             element.innerText = `${itemsCount}`
         })
     }
+}
+
+
+function loginBeforeAddToCartModal(){
+    let modal=`<div class="modal fade" tabindex="-1" id="warning-modal">
+    <div class="modal-dialog modal-dialog-centered"">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>login first before adding items to cart.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-login">login</button>
+        </div>
+      </div>
+    </div>
+  </div>`
+  document.body.querySelector("script").insertAdjacentHTML("beforebegin",modal);
+
 }

@@ -43,8 +43,9 @@ function isLoggedIn(){
         }
         return true;
     }else{
-        document.querySelector("nav .fa-cart-shopping").parentElement.href=""
-        document.querySelector("nav .fa-cart-shopping").parentElement.setAttribute("onclick","event.preventDefault()")
+        document.querySelector("nav .fa-cart-shopping").parentElement.href=location.origin+"/src/pages/loginpage.html"
+
+        // document.querySelector("nav .fa-cart-shopping").parentElement.setAttribute("onclick","event.preventDefault()")
         if(location.href.endsWith("cartpage.html")){
 
             location.href=location.origin+"/src/pages/loginpage.html" //important change to index.html after index.html is created

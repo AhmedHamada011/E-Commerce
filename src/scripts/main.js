@@ -299,7 +299,7 @@ function setLocal(item){
 }
 
 
-function getLocal(){
+export function getLocal(){
 
     let counterBadge = document.querySelectorAll('.badge')
     let check = (localStorage.getItem('cart'));

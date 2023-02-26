@@ -1,3 +1,5 @@
+import { getLocal } from "./main.js";
+
 //***********************************restore*************************************************************/
 var itemscontainer = document.getElementById("itemscontainer")
 console.log(itemscontainer)
@@ -128,7 +130,6 @@ document.getElementById("button-addon2").addEventListener("click", applypromocod
 
 document.getElementById("itemscontainer").addEventListener("click", event => {
     if (event.target.className === "btn btn-outline-secondary delete") {
-
         
 
    console.log(event.target.closest(".productitem").querySelector(".productid"))
@@ -147,6 +148,7 @@ document.getElementById("itemscontainer").addEventListener("click", event => {
 
 
     sumprice()
+    getLocal()
     
     applypromocode()
        

@@ -36,6 +36,8 @@ export function getWomenProducts(){
 // check if user is logged using token if yes goto home page else login
 function isLoggedIn(){
     if(localStorage.getItem("token")=="true"){
+    getLocal()
+
         if(location.href.endsWith("signuppage.html") || (location.href.endsWith("loginpage.html"))){
             location.href=location.origin+"/index.html" //important change to index.html after index.html is created
         }
@@ -126,11 +128,10 @@ function getProducts(product,collapseId,isOpen){
     })
 }).then(()=>{
     document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
-        btn.addEventListener("click",function(e){
-            // console.log(this);
+        btn.onclick =function(e){
             let data=getProductId(this);
             addToCart(data.id,data.qty)
-        })
+        }
     })
 })
 
@@ -263,7 +264,7 @@ function addToCart(id,qty){
     }
     cart=JSON.parse(localStorage.getItem("cart"))
     
-    
+    console.log(cart[id]?cart[id].qty+qty:qty);
     let product = {
         id : productData.id,
         name : productData.title,
@@ -274,10 +275,8 @@ function addToCart(id,qty){
 
     cart[id]=product;
     setLocal(JSON.stringify(cart));
-    // getLocal();
-    // counterBadge.forEach(element=>{
-    //     element.innerText =  `${cart.keys.length}`
-    // })
+    getLocal();
+    
 
 }
 
@@ -286,15 +285,21 @@ function setLocal(item){
 }
 
 
-// function getLocal(){
+function getLocal(){
 
-//     let counterBadge = document.querySelectorAll('.badge')
-//     let check = (localStorage.getItem('cart'));
+    let counterBadge = document.querySelectorAll('.badge')
+    let check = (localStorage.getItem('cart'));
 
-//     if(check){
-//         cart = JSON.parse(check);
-//         counterBadge.forEach(element=>{
-//             element.innerText = `${cart.keys.length}`
-//         })
-//     }
-// }
+    if(check){
+        let itemsCount=0;
+        let cart = JSON.parse(check);
+        console.log(Object.values(cart));
+        for(let item of Object.values(cart)){
+            // console.log(item["qty"]);
+            itemsCount+=Number.parseInt(item.qty);
+        }
+        counterBadge.forEach(element=>{
+            element.innerText = `${itemsCount}`
+        })
+    }
+}

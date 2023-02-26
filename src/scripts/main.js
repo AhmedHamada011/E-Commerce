@@ -34,37 +34,66 @@ export function getWomenProducts(){
 
 
 // check if user is logged using token if yes goto home page else login
-export function isLoggedIn(){
+function isLoggedIn(){
     if(localStorage.getItem("token")=="true"){
         if(location.href.endsWith("signuppage.html") || (location.href.endsWith("loginpage.html"))){
             location.href=location.origin+"/index.html" //important change to index.html after index.html is created
         }
         return true;
     }else{
+        document.querySelector("nav .fa-cart-shopping").parentElement.href=""
+        document.querySelector("nav .fa-cart-shopping").parentElement.setAttribute("onclick","event.preventDefault()")
+        // document.querySelector("nav .fa-cart-shopping").parentElement.addEventListener("click",function(e){
+        //     console.log("cliked")
+        //     e.preventDefault()
+        //     // e.stopImmediatePropagation()
+        //     // location.href=location.origin+"/src/pages/loginpage.html"
+        // })
+
         if(location.href.endsWith("cartpage.html")){
-            location.href=location.origin+"/src/pages/loginpage.html" //important change to index.html after index.html is created
+
+            // location.href=location.origin+"/src/pages/loginpage.html" //important change to index.html after index.html is created
         }
     return false;
 
     }
 }
 
+
 // check if user is logged in 
 
-function ifUserLoggedIn(){
-    let logOutBtn=`<button class="d-none d-md-block" id="nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>`;
+export function ifUserLoggedIn(){
+    let desk_login_out=document.querySelector(".nav-main.d-none.d-md-flex >div >ul");
+    let mob_login_out=document.querySelector(".offcanvas-body > ul .log-out")
+    //if user is logged in show logout
     if(isLoggedIn()){
-        document.querySelector(".nav-main.d-none.d-md-flex >div >ul").innerHTML+=logOutBtn
-        document.querySelector(".offcanvas-body > ul .log-out").innerHTML=`<button  id="mobile-nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket mx-0 me-1"></i>logout</button>`;
+        desk_login_out.innerHTML+=`<button class="d-none d-md-block" id="nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>`;
+
+        mob_login_out.innerHTML=`<button  id="mobile-nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket mx-0 me-1"></i>logout</button>`;
 
         document.getElementById("mobile-nav-logOut").addEventListener("click",function(){ // add event to log ou button
             logOut();
         })
 
-        logOutBtn=document.getElementById("nav-logOut").addEventListener("click",function(){ // add event to log ou button
+        document.getElementById("nav-logOut").addEventListener("click",function(){ // add event to log ou button
             logOut();
         })
 
+    //if user is logged out show login
+
+    }else{
+        desk_login_out.innerHTML+=`<button class="d-none d-md-block" id="nav-login">login</button>`;
+
+        mob_login_out.innerHTML=`<button  id="mobile-nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i>login</button>`;
+
+        
+        document.getElementById("mobile-nav-login").addEventListener("click",function(){ // add event to log ou button
+            location.href=location.origin+"/src/pages/loginpage.html"
+        })
+
+        document.getElementById("nav-login").addEventListener("click",function(){ // add event to log ou button
+            location.href=location.origin+"/src/pages/loginpage.html"
+        })
 
     }
 

@@ -189,16 +189,17 @@ secondSectionLinks.forEach(element=>{
 let cart = [];
 let cartBtn = document.querySelector('.cart-btn button')
 
-getLocal();
+getLocal('cart');
 
 cartBtn.addEventListener('click' , function(){
 
     let productNameModal = document.querySelector('.modal-body div h4').innerText;
     let productPriceModal = document.querySelector('.modal-body div h6').innerText;
     let productImgModal = document.querySelector('.modal-body img').getAttribute('src')
+    let cartStr = JSON.stringify(cart);
 
     addToCart(productNameModal , productPriceModal , productImgModal );
-    setLocal()
+    setLocal(cartStr)
 
 })
 
@@ -222,21 +223,22 @@ function addToCart(productName , productPrice , productImg ){
         element.innerText =  `${cart.length}`
     })
 
-    // counterBadge[].innerText = `${cart.length}`
-
 }
 
-function setLocal(){
 
-    localStorage.setItem('cart' , JSON.stringify(cart) )
+
+function setLocal(value){
+
+    localStorage.setItem('cart' , value )
 }
 
-function getLocal(){
+function getLocal(value){
 
     let counterBadge = document.querySelectorAll('.badge')
-    let check = (localStorage.getItem('cart'));
+    let check = (localStorage.getItem(value));
 
     if(check){
+
         cart = JSON.parse(check);
 
         counterBadge.forEach(element=>{
@@ -245,8 +247,5 @@ function getLocal(){
     }
 }
 
-function deleteLocal(){
 
-
-}
 

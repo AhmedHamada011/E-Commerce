@@ -20,7 +20,7 @@
                 <div class="d-flex flex-column">
                     <span class="fw-bolder h5 mt-2 mt-md-0">Delivery Method</span>
                     <label for="home-shping" class="d-flex align-content-center bg-white gap-3 mt-2">
-                        <input class="ms-3" type="radio" name="shping" value="">
+                        <input id="home-delivery" class="ms-3" type="radio" name="shping" value="">
                         <i class="fas fa-truck align-self-center"></i>
                         <div class="d-flex flex-column">
                             <span class="fw-bolder">Delivery</span>
@@ -40,13 +40,13 @@
                     <div class="accordion accordion-flush" id="accordionFlushExample">
                         <div class="accordion-item">
                           <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed fw-bolder h5" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <button id="personal-info" class="accordion-button collapsed fw-bolder h5" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                 Delivery information
                             </button>
                           </h2>
                           <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
-                                <form class="row g-3">
+                                <form onsubmit="return false;" class="row g-3">
                                     <div class="form-floating mb-3">
                                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                         <label for="floatingInput">Full Name</label>
@@ -66,7 +66,7 @@
                                         <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                         <label for="floatingInput">City</label>
                                     </div>
-                                    <div class="col-md-5">
+                                    <!-- <div class="col-md-5">
                                         <div class="form-floating">
                                             <select class="form-select" id="floatingSelectGrid">
                                                 <option selected>.....</option>
@@ -77,26 +77,37 @@
                                             </select>
                                             <label for="floatingSelectGrid">Select Region</label>
                                           </div>                    
+                                    </div> -->
+                                    <div class="col-md-4 col-12 form-floating mb-3">
+                                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Region</label>
                                     </div>
                                     <div class="form-floating col-md-3">
                                         <input type="text" class="form-control" id="floatingInput" placeholder="">
                                         <label for="floatingInput">Zip</label>
                                     </div>
                                     <div class="col-12 d-grid gap-2 mb-2">
-                                      <button type="submit" class="btn bg-black text-white">SAVE</button>
+                                      <button id="save" type="submit" class="btn bg-black text-white">SAVE</button>
                                     </div>
                                 </form>
                             </div>
                           </div>
                         </div>
                     </div>
+                    <div  class="bg-white d-flex d-none" id="showAllPersonalInfo">
+                        <div class="d-flex flex-column align-content-center m-3">
+                            <span id="putFullName" class="fw-bold h6 flex-grow-1">Ahmed Mohamed Zein</span>
+                            <span id="Email-phone-city-region" class="text-muted">ahmedzain503@gmail, 01120273779, Alexandria, sidibsher</span>
+                        </div>
+                        <button id="change" type="button" class="btn btn-danger">Change</button> 
+                    </div>
                     <div id="done-personal-data" class="bg-white d-none">
-                        <div id="standard-delivery" class="d-flex m-3">
+                        <div class="d-flex m-3">
                             <div class="d-flex flex-column flex-grow-1">
                                 <span class="fw-bolder h6">Standard Delivery</span>
                                 <p>Your order will be delivered within 1-5 days</p>
                             </div>
-                            <span class="h5">FREE</span>
+                            <span class="fw-bold">FREE</span>
                         </div>
                     </div>
                 </div>
@@ -144,7 +155,7 @@
                     I confirm that I have read and accept the <a href="#" target="_blank"  class="text-black">Privacy Policy</a> and <a href="#" target="_blank" class="text-black">Terms &amp; Conditions</a> of purchase, read our <a href="#"  class="text-black">Return&nbsp;</a>Policy.
                 </p>
                 <div class="d-grid mt-4 mb-5">
-                    <button class="btn bg-black fw-bold text-white" type="button" disabled>COMPLETE PURCHASE</button>
+                    <button id="COMPLETE-PURCHASE" class="btn bg-black fw-bold text-white" type="button" disabled>COMPLETE PURCHASE</button>
                 </div>
             </section>
             <aside class="row col-12 col-md-5 offset-1 d-flex flex-column  order-0 order-md-1 align-content-center">

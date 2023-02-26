@@ -127,12 +127,14 @@ function getProducts(product,collapseId,isOpen){
 
     })
 }).then(()=>{
-    document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
-        btn.onclick =function(e){
-            let data=getProductId(this);
-            addToCart(data.id,data.qty)
-        }
-    })
+    if(localStorage.getItem("token")=="true"){
+        document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
+            btn.onclick =function(e){
+                let data=getProductId(this);
+                addToCart(data.id,data.qty)
+            }
+        })
+    }
 })
 
 }

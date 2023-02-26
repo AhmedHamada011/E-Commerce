@@ -1,5 +1,5 @@
-// var itemscontainer=document.getElementById("itemscontainer")
-// console.log(itemscontainer)
+var itemscontainer=document.getElementById("itemscontainer")
+console.log(itemscontainer)
 
 
 
@@ -10,15 +10,16 @@
     var restoredarray=JSON.parse(restored)
 
    
-  console.log(restoredarray)
-  console.log(restoredarray[0])
-  console.log(restoredarray[0].id)
-  console.log(restoredarray[1].src)
-  console.log(restoredarray[0].price)
-  console.log(restoredarray[0].name)
-  var len =restoredarray.length
-  console.log=(len)
-    for(var i=0;i<len;i++){
+//   console.log(restoredarray)
+//   console.log(restoredarray[0])
+//   console.log(restoredarray[0].id)
+//   console.log(restoredarray[1].src)
+//   console.log(restoredarray[0].price)
+//   console.log(restoredarray[0].name)
+  
+    for (var item of Object.values(restoredarray)){
+        console.log(item.name)
+
 
 
   var itemscontainerdocument=document.getElementById("itemscontainer")
@@ -27,16 +28,16 @@
  itemscontainerdocument.insertAdjacentHTML('afterbegin',`<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;">
  <div class="row g-0">
    <div class="col-md-4">
-     <img src=${restoredarray[i].src} class="img-fluid rounded-start" alt="itemimag">
+     <img src=${item.src} class="img-fluid rounded-start" alt="itemimag">
    </div>
    <div class="col-md-8">
      <div class="card-body">
-       <h5 class="card-title">${restoredarray[i].name}</h5>
+       <h5 class="card-title">${item.name}</h5>
        <p class="card-text m-0">color red</p>
-       <p class="card-text m-0">${restoredarray[i].id}</p>
+       <p class="card-text m-0">${item.id}</p>
        <p class="card-text m-0">size:medium</p>
-       <p class="card-text m-0">price:${restoredarray[i].price}</p>
-       <p class="card-text m-0"> quantity:${restoredarray[i].qty}</p>
+       <p class="card-text m-0">price:${item.price}</p>
+       <p class="card-text m-0"> quantity:${item.qty}</p>
        <hr>
        <div class="row col-12">
          <div class="col-md-10 col-sm-12">
@@ -55,14 +56,28 @@
    </div>
  </div>
 </div>`)
-//var innerdiv=
-//const node = document.createTextNode(innerdiv);
-//para.appendChild(node);
+// var innerdiv=
+// const node = document.createTextNode(innerdiv);
+// para.appendChild(node);
 
-  //itemscontainerdocument.innerHTML='<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;"><div class="row g-0"><div class="col-md-4"><img src="..\icon\t2.webp" class="img-fluid rounded-start" alt="itemimag"> </div><div class="col-md-8"> <div class="card-body"><h5 class="card-title">Basic t-shirts</h5> <p class="card-text m-0">color red</p> <p class="card-text m-0">`${(varrestoredarray[0].id}`</p> <p class="card-text m-0">size:medium</p><hr><div class="row col-12"><div class="col-md-10 col-sm-12"><button type="button" class="btn btn-link">Add to favourits  </button></div><div class="col-md-2 col-sm-12"><button type="button" class="btn btn-outline-secondary delete"><i class="fa-solid fa-trash"></i></button></div></div><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div></div>/div>'
-  //itemscontainerdocument.append(JSON.parse(innerdiv))
+//   itemscontainerdocument.innerHTML='<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;"><div class="row g-0"><div class="col-md-4"><img src="..\icon\t2.webp" class="img-fluid rounded-start" alt="itemimag"> </div><div class="col-md-8"> <div class="card-body"><h5 class="card-title">Basic t-shirts</h5> <p class="card-text m-0">color red</p> <p class="card-text m-0">`${(varrestoredarray[0].id}`</p> <p class="card-text m-0">size:medium</p><hr><div class="row col-12"><div class="col-md-10 col-sm-12"><button type="button" class="btn btn-link">Add to favourits  </button></div><div class="col-md-2 col-sm-12"><button type="button" class="btn btn-outline-secondary delete"><i class="fa-solid fa-trash"></i></button></div></div><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div></div>/div>'
+//   itemscontainerdocument.append(JSON.parse(innerdiv))
 }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 window.onload=restorefunction()
  

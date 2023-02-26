@@ -1,5 +1,7 @@
 
 
+
+
 //back to top button 
 let totopBtn = document.getElementById('totop');
 totopBtn.style.display = 'none' ;
@@ -178,3 +180,73 @@ secondSectionLinks.forEach(element=>{
 // .catch(err=>{
 //     console.log(err)
 // })
+
+
+
+// add to cart mechanism
+
+
+let cart = [];
+let cartBtn = document.querySelector('.cart-btn button')
+
+getLocal();
+
+cartBtn.addEventListener('click' , function(){
+
+    let productNameModal = document.querySelector('.modal-body div h4').innerText;
+    let productPriceModal = document.querySelector('.modal-body div h6').innerText;
+    let productImgModal = document.querySelector('.modal-body img').getAttribute('src')
+
+    addToCart(productNameModal , productPriceModal , productImgModal );
+    setLocal()
+
+})
+
+
+
+function addToCart(productName , productPrice , productImg ){
+
+    let counterBadge = document.querySelectorAll('.badge')
+    let product = {
+
+        id : Date.now(),
+        name : `${productName}`,
+        price : `${productPrice}`,
+        src : `${productImg}`,
+        qty : 1
+    }
+
+    cart.push(product)
+
+    counterBadge.forEach(element=>{
+        element.innerText =  `${cart.length}`
+    })
+
+    // counterBadge[].innerText = `${cart.length}`
+
+}
+
+function setLocal(){
+
+    localStorage.setItem('cart' , JSON.stringify(cart) )
+}
+
+function getLocal(){
+
+    let counterBadge = document.querySelectorAll('.badge')
+    let check = (localStorage.getItem('cart'));
+
+    if(check){
+        cart = JSON.parse(check);
+
+        counterBadge.forEach(element=>{
+            element.innerText =  `${cart.length}`
+        })
+    }
+}
+
+function deleteLocal(){
+
+
+}
+

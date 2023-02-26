@@ -185,16 +185,20 @@
                             </div>
                             <!-- carousel -->
                         </div>
-                        <div class="col-6">
-                            <h4 class="modal-title">Printed zip-through hoodie</h4>
-                            <h6 class="modal-price">EGP 1,099.00</h6>
+                        <div class="col-6 ">
+                            <h4 class="modal-title"></h4>
+                            <h6 class="modal-price"></h6>
+                            <p class="modal-id product_id"></p>
                             <p class="modal-desc"></p>
                             <p class="modal-brand"></p>
                             <p class="modal-category"></p>
                             <p class="modal-stock"></p>
+                            <input class="input-number modal-qty product_qty mb-3" type="number" placeholder="Qty" min="1" style="width:80px" value="1">
 
                             <div class="cart-btn">
-                                <button data-bs-dismiss="modal" type="button" class="btn btn-outline-secondary">
+
+                                <button data-bs-dismiss="modal" type="button" class="btn btn-outline-secondary product-addtocart-btn">
+
                                     <i class="fa-solid fa-cart-shopping"></i> Add to cart
                                 </button>
 
@@ -339,6 +343,8 @@
         crossorigin="anonymous"></script>
     <script type="module" src="../scripts/main.js"></script>
     <script type="module"  src="../scripts/menpage.js"></script>
+    <script src="../scripts/adtocartSections.js"></script>
+
 </body>
 
 </html>

@@ -118,3 +118,10 @@
         color: red;
     }
 }
+
+.modal-home-img{
+    width: 80%;
+    aspect-ratio: 2/3;
+    cursor: pointer;
+    object-fit: cover;
+}

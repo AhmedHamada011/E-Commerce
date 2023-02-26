@@ -1,7 +1,5 @@
 
 
-
-
 //back to top button 
 let totopBtn = document.getElementById('totop');
 totopBtn.style.display = 'none' ;
@@ -104,10 +102,7 @@ contactForm.addEventListener('submit',function(e){
     
 })
 
-
 let saleImgs = document.querySelectorAll('#home-sale div img');
-
-console.log(saleImgs)
 
 saleImgs.forEach(element=>{
 
@@ -139,16 +134,19 @@ saleImgs.forEach(element=>{
 
     element.addEventListener('click' , function(e){
 
-        let productDetails = e.target.parentElement.children[2];
+        let productDetails = e.target.parentElement.children[2].children;
 
         let productImgModal = document.querySelector('.modal-body img')
         productImgModal.setAttribute('src' ,e.target.getAttribute('src') )
 
         let productNameModal = document.querySelector('.modal-body div h4')
-        productNameModal.innerText = productDetails.firstElementChild.innerText;
+        productNameModal.innerText = productDetails[0].innerText;
 
-        let productPriceModal = document.querySelector('.modal-body div h6');
-        productPriceModal.innerText = productDetails.lastElementChild.firstElementChild.innerText ;
+        let productIdModal = document.querySelector('.modal-body div h6 span')
+        productIdModal.innerText = productDetails[1].firstElementChild.innerText
+        
+        let productPriceModal = document.querySelector('.modal-body div h5');
+        productPriceModal.innerText = productDetails[2].firstElementChild.innerText ;
 
     })
 })
@@ -186,7 +184,7 @@ secondSectionLinks.forEach(element=>{
 // add to cart mechanism
 
 
-let cart = [];
+let cart = {};
 let cartBtn = document.querySelector('.cart-btn button')
 
 getLocal('cart');
@@ -194,33 +192,46 @@ getLocal('cart');
 cartBtn.addEventListener('click' , function(){
 
     let productNameModal = document.querySelector('.modal-body div h4').innerText;
-    let productPriceModal = document.querySelector('.modal-body div h6').innerText;
-    let productImgModal = document.querySelector('.modal-body img').getAttribute('src')
-    let cartStr = JSON.stringify(cart);
+    let productPriceModal = document.querySelector('.modal-body div h5').innerText;
+    let productImgModal = document.querySelector('.modal-body img').getAttribute('src');
+    let productIdModal = document.querySelector('.modal-body div h6 span').innerText;
 
-    addToCart(productNameModal , productPriceModal , productImgModal );
+    
+
+    addToCart(productNameModal , productPriceModal , productImgModal , productIdModal);
+
+    let cartStr = JSON.stringify(cart);
     setLocal(cartStr)
 
 })
 
 
 
-function addToCart(productName , productPrice , productImg ){
+function addToCart(productName , productPrice , productImg , productId ){
 
     let counterBadge = document.querySelectorAll('.badge')
     let product = {
 
-        id : Date.now(),
+        id : `${productId}`,
         name : `${productName}`,
         price : `${productPrice}`,
         src : `${productImg}`,
         qty : 1
     }
 
-    cart.push(product)
-
+    if(cart.hasOwnProperty(productId)){
+        cart[productId].qty += 1;
+    }else{
+        cart[productId] = product;
+    }
+    
+    let len = 0 ;
+    Object.keys(cart).forEach(x=>{
+        len += cart[x].qty;
+    })
+    
     counterBadge.forEach(element=>{
-        element.innerText =  `${cart.length}`
+        element.innerText =  `${len}`
     })
 
 }
@@ -240,9 +251,15 @@ function getLocal(value){
     if(check){
 
         cart = JSON.parse(check);
+        
+        let len = 0 ;
 
+        Object.keys(cart).forEach(x=>{
+            len += cart[x].qty;
+        })
+        
         counterBadge.forEach(element=>{
-            element.innerText =  `${cart.length}`
+            element.innerText =  `${len}`
         })
     }
 }

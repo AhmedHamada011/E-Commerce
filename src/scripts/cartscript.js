@@ -6,10 +6,15 @@ console.log(itemscontainer)
 
 
 function restorefunction() {
+
     sumprice()
 
     let restored = localStorage.getItem("cart")
     var restoredarray = JSON.parse(restored)
+var checkarray=Object.values(restoredarray)
+if(checkarray.length==0)
+{        itemscontainer.innerHTML = "<h3 class='text-center bg-dark-subtle'>Your cart is empty</h3>"
+}else{
 
 
     for (var item of Object.values(restoredarray)) {
@@ -59,7 +64,7 @@ function restorefunction() {
         //   itemscontainerdocument.append(JSON.parse(innerdiv))
     }
 }
-
+}
 
 
 

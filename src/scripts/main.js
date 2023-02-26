@@ -4,7 +4,7 @@
 
 // check if user is logged using token if yes goto home page else login
 
-ifUserLoggedIn()
+addLogout_inButtons()
 
 //continue adding page later
 // if(document.title=="men section"){//add products to men page
@@ -43,16 +43,9 @@ function isLoggedIn(){
     }else{
         document.querySelector("nav .fa-cart-shopping").parentElement.href=""
         document.querySelector("nav .fa-cart-shopping").parentElement.setAttribute("onclick","event.preventDefault()")
-        // document.querySelector("nav .fa-cart-shopping").parentElement.addEventListener("click",function(e){
-        //     console.log("cliked")
-        //     e.preventDefault()
-        //     // e.stopImmediatePropagation()
-        //     // location.href=location.origin+"/src/pages/loginpage.html"
-        // })
-
         if(location.href.endsWith("cartpage.html")){
 
-            // location.href=location.origin+"/src/pages/loginpage.html" //important change to index.html after index.html is created
+            location.href=location.origin+"/src/pages/loginpage.html" //important change to index.html after index.html is created
         }
     return false;
 
@@ -62,7 +55,7 @@ function isLoggedIn(){
 
 // check if user is logged in 
 
-export function ifUserLoggedIn(){
+export function addLogout_inButtons(){
     let desk_login_out=document.querySelector(".nav-main.d-none.d-md-flex >div >ul");
     let mob_login_out=document.querySelector(".offcanvas-body > ul .log-out")
     //if user is logged in show logout

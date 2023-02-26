@@ -8,9 +8,10 @@
 .footer-icons-social li:hover {
   background-color: #cfd6e1;
   transition: 0.5s;
+  cursor: pointer;
 }
 
-.footer-icons-social li i:hover{
+.footer-icons-social li:hover *{
   color: #212934;
   transition: .5s;
 }

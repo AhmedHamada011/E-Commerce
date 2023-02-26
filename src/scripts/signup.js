@@ -39,7 +39,7 @@
                 event.stopPropagation()
             }
             localStorage.setItem("username",UserName.value)
-            localStorage.setItem("email",email.value)
+            localStorage.setItem("email",email.value.toLowerCase())
             localStorage.setItem("password",pass.value)
             form.classList.add('was-validated')
         }, false)

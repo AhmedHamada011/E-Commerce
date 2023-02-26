@@ -128,6 +128,7 @@ function getProducts(product,collapseId,isOpen){
     document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
         btn.addEventListener("click",function(e){
             // console.log(this);
+            e.stopImmediatePropagation()
             let data=getProductId(this);
             addToCart(data.id,data.qty)
         })
@@ -263,7 +264,7 @@ function addToCart(id,qty){
     }
     cart=JSON.parse(localStorage.getItem("cart"))
     
-    
+    console.log(cart[id]?cart[id].qty+qty:qty);
     let product = {
         id : productData.id,
         name : productData.title,

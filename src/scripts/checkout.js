@@ -9,18 +9,20 @@ const credit = document.getElementById("card-display");
 const creditRadio = document.getElementById("credit");
 const cash = document.getElementById("cash");
 const COMPLETE_PURCHASE = document.getElementById("COMPLETE-PURCHASE");
-let flag1 = false;
-let flag2 = false;
-let flag3 = false;
+const getFullName = document.getElementById("getFullName");
+const getEmail = document.getElementById("getEmail");
+const getPhone = document.getElementById("getPhone");
+const getCity = document.getElementById("getCity");
+const getRegion = document.getElementById("getRegion");
+const openMap = document.getElementById("open-map");
+
+let flag = false;
 
 
 //Functions
 
 function changeFlag1 () {
-    if ( homeDelivery.checked === true ) {
-        flag1 = true;
-    }
-    checkSaveInfoButton();
+    //anything
 }
 
 function savePersonalData () {
@@ -33,7 +35,10 @@ function savePersonalData () {
 
     showAllPersonalInfo.classList.remove("d-none");
     personalInfo.classList.add("d-none");
-    flag2 = true;
+    flag = true;
+
+    document.getElementById("putFullName").innerText = getFullName.value ; 
+    document.getElementById("Email-phone-city-region").innerText = `${getEmail.value}, ${getPhone.value}, ${getCity.value}, ${getRegion.value}` ; 
 
     checkSaveInfoButton();
 }
@@ -42,7 +47,7 @@ function reset () {
     personalInfo.classList.remove("d-none");
     showAllPersonalInfo.classList.add("d-none");
     freeShipingMessage.classList.add("d-none");
-    flag2 = false;
+    flag = false;
 
     checkSaveInfoButton();
 }
@@ -51,8 +56,6 @@ function showCredit () {
     if (creditRadio.checked === true) {
      credit.classList.remove("d-none");
     }
-    flag3 = true ;
-    checkSaveInfoButton();
 }
 
 function hideCredite () {
@@ -60,7 +63,7 @@ function hideCredite () {
 }
 
 function checkSaveInfoButton () {
-    if ( flag1 && flag2 && flag3 ) {
+    if ( (homeDelivery.checked || openMap.checked) && flag && (creditRadio.checked || cash.checked) ) {
         COMPLETE_PURCHASE.removeAttribute("disabled");
     }
     else {
@@ -72,9 +75,14 @@ function done () {
     alert("Done");
 }
 
+function openThisMap () {
+    //Open map
+}
+
 //Events
 
 homeDelivery.addEventListener('click' , changeFlag1 );
+openMap.addEventListener('click', openThisMap);
 personalInfoSave.addEventListener('click', savePersonalData);
 changePersonalData.addEventListener('click', reset);
 creditRadio.addEventListener('click', showCredit);

@@ -222,12 +222,12 @@
                 <div class="row col-md-10 pt-3 rounded bg-dark-subtle bg-gradient offset-md-1 col-sm-10 offset-sm-1"
                   id="cart_order_total_price">
                   <p class="col-6 fw-semibold">Order Total</p>
-                  <span class="col-6">EGP 500.00</span>
+                  <span class="col-6" id="price"></span>
                   <p class="col-6 fw-semibold">Discount</p>
-                  <span class="col-6">EGP -50</span>
+                  <span class="col-6" id="discount">EGP -50</span>
                   <hr />
                   <p class="col-6 fw-semibold">Total</p>
-                  <span class="col-6">EGP 450.00</span>
+                  <span class="col-6" id="totalprice"></span>
                 </div>
               </div>
               <!--*******************************************************ordersummary*************************************************-->
@@ -235,7 +235,7 @@
               <!--************************************************************promocode*********************************************************-->
               <div class="row bg-light col-12 mt-2 pt-3">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Add Promocode" aria-label="Recipient's username"
+                  <input type="text" id="promocode" class="form-control" placeholder="Add Promocode" aria-label="Recipient's username"
                     aria-describedby="button-addon2" />
                   <button class="btn btn-outline-secondary" type="button" id="button-addon2">
                     Add

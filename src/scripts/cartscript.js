@@ -1,42 +1,38 @@
-// var itemscontainer=document.getElementById("itemscontainer")
-// console.log(itemscontainer)
+//***********************************restore*************************************************************/
+var itemscontainer = document.getElementById("itemscontainer")
+console.log(itemscontainer)
 
 
 
 
-  function restorefunction(){
+function restorefunction() {
+    sumprice()
 
     let restored = localStorage.getItem("cart")
-    var restoredarray=JSON.parse(restored)
-
-   
-  console.log(restoredarray)
-  console.log(restoredarray[0])
-  console.log(restoredarray[0].id)
-  console.log(restoredarray[1].src)
-  console.log(restoredarray[0].price)
-  console.log(restoredarray[0].name)
-  var len =restoredarray.length
-  console.log=(len)
-    for(var i=0;i<len;i++){
+    var restoredarray = JSON.parse(restored)
 
 
-  var itemscontainerdocument=document.getElementById("itemscontainer")
+    for (var item of Object.values(restoredarray)) {
 
- // mainDiv.insertAdjacentHTML('afterbegin', '<p>This is paragraph two.</p>');
- itemscontainerdocument.insertAdjacentHTML('afterbegin',`<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;">
+     //   console.log(item.name)
+
+
+        var itemscontainerdocument = document.getElementById("itemscontainer")
+
+        // mainDiv.insertAdjacentHTML('afterbegin', '<p>This is paragraph two.</p>');
+        itemscontainerdocument.insertAdjacentHTML('afterbegin', `<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;">
  <div class="row g-0">
    <div class="col-md-4">
-     <img src=${restoredarray[i].src} class="img-fluid rounded-start" alt="itemimag">
+     <img src=${item.src} class="img-fluid rounded-start" alt="itemimag" >
    </div>
    <div class="col-md-8">
-     <div class="card-body">
-       <h5 class="card-title">${restoredarray[i].name}</h5>
-       <p class="card-text m-0">color red</p>
-       <p class="card-text m-0">${restoredarray[i].id}</p>
-       <p class="card-text m-0">size:medium</p>
-       <p class="card-text m-0">price:${restoredarray[i].price}</p>
-       <p class="card-text m-0"> quantity:${restoredarray[i].qty}</p>
+     <div class="card-body productitem">
+       <h5 class="card-title"> ${item.name}</h5>
+       
+       <p class="card-text m-0 productid" id="item-${item.id}">${item.id}</p>
+       
+       <p class="card-text m-0">price:${item.price}</p>
+       <p class="card-text m-0"> quantity:${item.qty}</p>
        <hr>
        <div class="row col-12">
          <div class="col-md-10 col-sm-12">
@@ -55,33 +51,112 @@
    </div>
  </div>
 </div>`)
-//var innerdiv=
-//const node = document.createTextNode(innerdiv);
-//para.appendChild(node);
+        // var innerdiv=
+        // const node = document.createTextNode(innerdiv);
+        // para.appendChild(node);
 
-  //itemscontainerdocument.innerHTML='<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;"><div class="row g-0"><div class="col-md-4"><img src="..\icon\t2.webp" class="img-fluid rounded-start" alt="itemimag"> </div><div class="col-md-8"> <div class="card-body"><h5 class="card-title">Basic t-shirts</h5> <p class="card-text m-0">color red</p> <p class="card-text m-0">`${(varrestoredarray[0].id}`</p> <p class="card-text m-0">size:medium</p><hr><div class="row col-12"><div class="col-md-10 col-sm-12"><button type="button" class="btn btn-link">Add to favourits  </button></div><div class="col-md-2 col-sm-12"><button type="button" class="btn btn-outline-secondary delete"><i class="fa-solid fa-trash"></i></button></div></div><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div></div>/div>'
-  //itemscontainerdocument.append(JSON.parse(innerdiv))
+        //   itemscontainerdocument.innerHTML='<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;"><div class="row g-0"><div class="col-md-4"><img src="..\icon\t2.webp" class="img-fluid rounded-start" alt="itemimag"> </div><div class="col-md-8"> <div class="card-body"><h5 class="card-title">Basic t-shirts</h5> <p class="card-text m-0">color red</p> <p class="card-text m-0">`${(varrestoredarray[0].id}`</p> <p class="card-text m-0">size:medium</p><hr><div class="row col-12"><div class="col-md-10 col-sm-12"><button type="button" class="btn btn-link">Add to favourits  </button></div><div class="col-md-2 col-sm-12"><button type="button" class="btn btn-outline-secondary delete"><i class="fa-solid fa-trash"></i></button></div></div><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div></div>/div>'
+        //   itemscontainerdocument.append(JSON.parse(innerdiv))
+    }
 }
-  }
 
-window.onload=restorefunction()
- 
+
+
+
+
+/****************************sumprice**************************************************/
+
+
+var sum ;
+
+function sumprice() {
+    sum=0;
+    var sumprice = document.getElementById("price")
+    console.log(sumprice)
+    let restored = localStorage.getItem("cart")
+    var restoredarray = JSON.parse(restored)
+
+    var item = Object.values(restoredarray)
+
+    for (var i = 0; i < item.length; i++) {
+        sum = sum + item[i].price
+       
+    
+    }
+    sumprice.innerHTML = ` ${sum}`
+    document.getElementById("totalprice").innerText = ` ${sum}`
+    document.getElementById("discount").innerText= `0%`
+
+
+}
+
+/****************************apply promocode**************************************************/
+
+window.onload = restorefunction()
+function applypromocode() {
+    
+
+    var promocode = document.getElementById("promocode").value
+
+    if (promocode != "") {
+        if (promocode == "halfprice") {
+            sum = sum / 2
+            document.getElementById("totalprice").innerHTML = ` ${sum}`
+            document.getElementById("discount").innerHTML= `50%`
+
+        }
+    }
+}
+
+document.getElementById("button-addon2").addEventListener("click", applypromocode)
+
+
+
+
+
+
+/****************************delete**************************************************/
+
 
 
 
 
 document.getElementById("itemscontainer").addEventListener("click", event => {
     if (event.target.className === "btn btn-outline-secondary delete") {
-    //  console.log("Click!");
-     //console.log(event.target.parentElement.parentElement.parentElement)
-     
-     event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
-    }
-    var itemscontainerdocument=document.getElementById("itemscontainer")
-   // console.log(itemscontainerdocument.innerText)
-    if (itemscontainerdocument.innerText=='')
 
-    {
+        
+
+   console.log(event.target.closest(".productitem").querySelector(".productid"))
+  var itemid= event.target.closest(".productitem").querySelector(".productid").innerText
+   itemid=Number(itemid)
+      
+      //  console.log(event.target.parentElement.parentElement)
+        let restored = localStorage.getItem("cart")
+       // console.log(restored)
+        var restoredarray = JSON.parse(restored)
+        console.log(restoredarray[itemid])
+    delete restoredarray[itemid]
+    console.log(restoredarray)
+    localStorage.setItem("cart",JSON.stringify(restoredarray))
+
+
+
+    sumprice()
+    
+    applypromocode()
        
-       itemscontainerdocument.innerHTML="<h3 class='text-center bg-dark-subtle'>Your cart is empty</h3>"
-    } });
+      
+
+        event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
+    }
+    var itemscontainerdocument = document.getElementById("itemscontainer")
+    // console.log(itemscontainerdocument.innerText)
+    if (itemscontainerdocument.innerText == '') {
+
+        itemscontainerdocument.innerHTML = "<h3 class='text-center bg-dark-subtle'>Your cart is empty</h3>"
+    }
+});
+
+
+// let restored = localStorage.getItem("cart")
+// var restoredarray = JSON.parse(restored)

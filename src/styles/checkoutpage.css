@@ -4,6 +4,7 @@ body {
 
 input[type='radio'] { 
     transform: scale(1.5); 
+    accent-color: green;
 }
 
 #flexRadioDisabled{
@@ -27,8 +28,4 @@ input[type='radio'] {
 
 button {
     border-radius: 0 !important;
-}
-
-.order {
-    margin: 2%;
 }

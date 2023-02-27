@@ -15,9 +15,11 @@ const getPhone = document.getElementById("getPhone");
 const getCity = document.getElementById("getCity");
 const getRegion = document.getElementById("getRegion");
 const openMap = document.getElementById("open-map");
+const getLandMark = document.getElementById("getLandMark");
+const zips = document.getElementById("zips");
 
 let flag = false;
-
+let saveFlag = false;
 
 //Functions
 
@@ -71,14 +73,71 @@ function checkSaveInfoButton () {
     }
 }
 
-function done () {
-    alert("Done");
-}
 
 function openThisMap () {
     //Open map
 }
 
+function validationFullName () {
+    let regex = /[0-9]/g
+    let string = this.value;
+
+    let stringHasNumbers = regex.test(string);
+    if (stringHasNumbers) {
+        // red
+        this.parentNode.querySelector('span').classList.remove('d-none');
+        
+    }
+    else {
+        // green
+        this.parentNode.querySelector('span').classList.add('d-none');
+        
+    }
+}  
+
+function validationEmail() {
+    let regex = /(\@)|(\.com)/g
+    let string = this.value;
+
+    let stringHasNumbers = regex.test(string);
+    if (!stringHasNumbers) {
+        // red
+        this.parentNode.querySelector('span').classList.remove('d-none');
+        
+    }
+    else {
+        // green
+        this.parentNode.querySelector('span').classList.add('d-none');
+        
+    }
+}
+
+function validationPhoneNumber() {
+    let regex = /[a-zA-Z]/g
+    let string = this.value;
+
+    let stringHasNumbers = regex.test(string);
+    if (stringHasNumbers) {
+        // red
+        this.parentNode.querySelector('span').classList.remove('d-none');
+    }
+    else {
+        // green
+        this.parentNode.querySelector('span').classList.add('d-none');
+    }
+
+}
+
+
+function locationValidation () {
+    if (!this.value) {
+        this.parentNode.querySelector('span').classList.remove('d-none');
+    }
+}
+
+function checkOutTotalPrice() {
+    document.getElementById("CheckOut-Total-Cost").innerText = `EGP ${localStorage.getItem("Sumprice")}`;
+}
 //Events
 
 homeDelivery.addEventListener('click' , changeFlag1 );
@@ -86,5 +145,11 @@ openMap.addEventListener('click', openThisMap);
 personalInfoSave.addEventListener('click', savePersonalData);
 changePersonalData.addEventListener('click', reset);
 creditRadio.addEventListener('click', showCredit);
+creditRadio.addEventListener('click',checkSaveInfoButton);
 cash.addEventListener('click' , hideCredite);
-COMPLETE_PURCHASE.addEventListener('click' , done);
+getFullName.addEventListener('input', validationFullName);
+getEmail.addEventListener('input' , validationEmail);
+getPhone.addEventListener('input', validationPhoneNumber);
+getCity.addEventListener('input', locationValidation);
+getRegion.addEventListener('input', locationValidation);
+zips.addEventListener('input', locationValidation);

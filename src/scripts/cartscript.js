@@ -94,6 +94,8 @@ function sumprice() {
     document.getElementById("totalprice").innerText = ` ${sum}`
     document.getElementById("discount").innerText= `0%`
 
+    localStorage.setItem("sumprice",sum)
+
 
 }
 
@@ -103,6 +105,8 @@ window.onload = restorefunction()
 function applypromocode() {
     
 
+  var addpromobtn=document.getElementById("button-addon2")
+
     var promocode = document.getElementById("promocode").value
 
     if (promocode != "") {
@@ -110,9 +114,13 @@ function applypromocode() {
             sum = sum / 2
             document.getElementById("totalprice").innerHTML = ` ${sum}`
             document.getElementById("discount").innerHTML= `50%`
+            localStorage.setItem("sumprice",sum)
+addpromobtn.disabled=true;
 
         }
+        
     }
+    
 }
 
 document.getElementById("button-addon2").addEventListener("click", applypromocode)
@@ -138,7 +146,7 @@ btn.addEventListener("click", event => {
   var itemid= event.target.closest(".productitem").querySelector(".productid").innerText
    itemid=Number(itemid)
       
-      //  console.log(event.target.parentElement.parentElement)
+      
         let restored = localStorage.getItem("cart")
        // console.log(restored)
         var restoredarray = JSON.parse(restored)
@@ -170,3 +178,4 @@ btn.addEventListener("click", event => {
 
 // let restored = localStorage.getItem("cart")
 // var restoredarray = JSON.parse(restored)
+

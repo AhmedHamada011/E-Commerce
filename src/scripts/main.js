@@ -227,8 +227,8 @@ function addEventModal(id){
             
             carousel_indicator.innerHTML+=`<button class="bg-primary" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${count++}" aria-label="Slide ${count}"></button>`
             carousel_inner.innerHTML+=
-            `<div class="carousel-item">
-            <img src="${img}" class="d-block w-100" alt="...">
+            `<div class="carousel-item row justify-content-center">
+                <img class="img-fluid" src="${img}" class="d-block w-100" alt="..." style="height: 500px;">
             </div>`
         })
 
@@ -245,10 +245,10 @@ function addEventModal(id){
 
 function changeModalData(productData){
     document.querySelector(".modal-title").innerText=productData.title;
-    document.querySelector(".modal-id").innerText=`id: ${productData.id}`;
+    document.querySelector(".modal-id").innerText=`ID: ${productData.id}`;
     document.querySelector(".modal-id").setAttribute("data-id",productData.id);
 
-    document.querySelector(".modal-price").innerText=`price: ${productData.price} egp`;
+    document.querySelector(".modal-price").innerText=`${productData.price} EGP`;
     document.querySelector(".modal-desc").innerText=`description: ${productData.description}`;
     document.querySelector(".modal-brand").innerText=`brand: ${productData.brand}`;
     document.querySelector(".modal-category").innerText=`category: ${productData.category}`;

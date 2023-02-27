@@ -133,11 +133,15 @@ function getProducts(product,collapseId,isOpen){
 }).then(()=>{
     if(localStorage.getItem("token")=="true"){
         document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
+            btn.setAttribute("data-bs-target","#addedToCartModal")
+            btn.setAttribute("data-bs-toggle","modal")
             btn.onclick =function(e){
                 let data=getProductId(this);
                 addToCart(data.id,data.qty)
                 
+                
             }
+            
         })
     }else{
         loginBeforeAddToCartModal();

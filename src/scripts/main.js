@@ -66,9 +66,9 @@ export function addLogout_inButtons(){
     let mob_login_out=document.querySelector(".offcanvas-body > ul .log-out")
     //if user is logged in show logout
     if(isLoggedIn()){
-        desk_login_out.innerHTML+=`<button class="d-none d-md-block" id="nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>`;
+        desk_login_out.innerHTML+=`<li><button class="d-none d-md-block" id="nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></li>`;
 
-        mob_login_out.innerHTML=`<button  id="mobile-nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket mx-0 me-1"></i>logout</button>`;
+        mob_login_out.innerHTML=`<li><button  id="mobile-nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket mx-0 me-1"></i>logout</button></li>`;
 
         document.getElementById("mobile-nav-logOut").addEventListener("click",function(){ // add event to log ou button
             logOut();
@@ -81,9 +81,9 @@ export function addLogout_inButtons(){
     //if user is logged out show login
 
     }else{
-        desk_login_out.innerHTML+=`<button class= d-none d-md-block" id="nav-login">login</button>`;
+        desk_login_out.innerHTML+=`<button class= d-none d-md-block" id="nav-login"></button>`;
 
-        mob_login_out.innerHTML=`<button "  id="mobile-nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i>login</button>`;
+        mob_login_out.innerHTML=`<button "  id="mobile-nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i></button>`;
 
         
         document.getElementById("mobile-nav-login").addEventListener("click",function(){ // add event to log ou button

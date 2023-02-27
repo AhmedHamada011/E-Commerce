@@ -136,7 +136,7 @@ function locationValidation () {
 }
 
 function checkOutTotalPrice() {
-    document.getElementById("CheckOut-Total-Cost").innerText = `EGP ${localStorage.getItem("Sumprice")}`;
+    document.getElementById("CheckOut-Total-Cost").innerText = `EGP ${localStorage.getItem("sumprice")}`;
 }
 //Events
 

@@ -1,5 +1,8 @@
+// check if token exists or not
 
-
+if(!localStorage.getItem('token')){
+    localStorage.setItem('token' , 'false')
+}
 
 
 // check if user is logged using token if yes goto home page else login
@@ -78,9 +81,9 @@ export function addLogout_inButtons(){
     //if user is logged out show login
 
     }else{
-        desk_login_out.innerHTML+=`<button class="d-none d-md-block" id="nav-login">login</button>`;
+        desk_login_out.innerHTML+=`<button class= d-none d-md-block" id="nav-login">login</button>`;
 
-        mob_login_out.innerHTML=`<button  id="mobile-nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i>login</button>`;
+        mob_login_out.innerHTML=`<button "  id="mobile-nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i>login</button>`;
 
         
         document.getElementById("mobile-nav-login").addEventListener("click",function(){ // add event to log ou button

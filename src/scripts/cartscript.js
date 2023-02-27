@@ -161,11 +161,10 @@ btn.addEventListener("click", event => {
     getLocal()
     
     applypromocode()
-       
       
 
-        event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
-    
+    event.currentTarget.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
+
     var itemscontainerdocument = document.getElementById("itemscontainer")
     // console.log(itemscontainerdocument.innerText)
     if (itemscontainerdocument.innerText == '') {

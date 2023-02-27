@@ -127,9 +127,11 @@ document.getElementById("button-addon2").addEventListener("click", applypromocod
 
 
 
+document.querySelectorAll(".btn.btn-outline-secondary.delete").forEach((btn)=>{
 
-document.getElementById("itemscontainer").addEventListener("click", event => {
-    if (event.target.className === "btn btn-outline-secondary delete") {
+
+btn.addEventListener("click", event => {
+    // if (event.target.className === "btn btn-outline-secondary delete") {
         
 
    console.log(event.target.closest(".productitem").querySelector(".productid"))
@@ -155,7 +157,7 @@ document.getElementById("itemscontainer").addEventListener("click", event => {
       
 
         event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove()
-    }
+    
     var itemscontainerdocument = document.getElementById("itemscontainer")
     // console.log(itemscontainerdocument.innerText)
     if (itemscontainerdocument.innerText == '') {
@@ -163,6 +165,7 @@ document.getElementById("itemscontainer").addEventListener("click", event => {
         itemscontainerdocument.innerHTML = "<h3 class='text-center bg-dark-subtle'>Your cart is empty</h3>"
     }
 });
+})
 
 
 // let restored = localStorage.getItem("cart")

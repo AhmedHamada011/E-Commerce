@@ -88,7 +88,13 @@
                         <a href="#"> <i class="fa-solid fa-magnifying-glass"></i> </a>
                     </li>
                     <li>
-                        <a href=""> <i class="fa-solid fa-cart-shopping"></i>‏</a>
+                        <a href="cartpage.html" class="position-relative">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                             0
+                             <span class="visually-hidden">unread messages</span>
+                           </span>
+                            ‏</a>
                     </li>
                     <li>
                         <a href=""> <i class="fa-solid fa-user"></i></a>
@@ -158,14 +164,14 @@
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-centered modal-lg" >
             <div class="modal-content rounded bg-light">
                 <div class="ms-2 my-2 ">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body px-5 bg-light">
                     <div class="row">
-                        <div class="col-6">
+                        <div class="col-12 col-lg-6" >
                             <!-- carousel -->
                             <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
                                 <div class="carousel-indicators">
@@ -189,18 +195,18 @@
                             </div>
                             <!-- carousel -->
                         </div>
-                        <div class="col-6 product">
+                        <div class="col-12 col-lg-6 product">
                             <h4 class="modal-title"></h4>
-                            <h6 class="modal-price"></h6>
-                            <p class="modal-id product_id"></p>
-                            <p class="modal-desc"></p>
+                            <h5 class="modal-price text-danger"></h5>
+                            <h6 class="modal-id product_id text-success"></h6>
                             <p class="modal-brand"></p>
                             <p class="modal-category"></p>
+                            <p class="modal-desc"></p>
                             <p class="modal-stock"></p>
-                            <input class="input-number modal-qty product_qty mb-3" type="number" placeholder="Qty" min="1" style="width:80px" value="1">
+                            <input class="input-number modal-qty product_qty mb-3 text-success ps-2 fs-5" type="number" placeholder="Qty" min="1" style="width:80px" value="1">
 
                             <div class="cart-btn">
-                                <button data-bs-dismiss="modal" type="button" class="btn btn-outline-secondary product-addtocart-btn">
+                                <button data-bs-dismiss="modal" type="button" class="btn btn-dark product-addtocart-btn">
 
                                     <i class="fa-solid fa-cart-shopping"></i> Add to cart
                                 </button>

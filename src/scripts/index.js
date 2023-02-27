@@ -146,8 +146,8 @@ saleImgs.forEach(element=>{
         productIdModal.innerText = productDetails[1].firstElementChild.innerText
         
         let productPriceModal = document.querySelector('.modal-body div h5');
-        productPriceModal.innerText = productDetails[2].firstElementChild.innerText ;
-
+        productPriceModal.innerText = Number.parseInt(productDetails[2].firstElementChild.innerText);
+        
     })
 })
 
@@ -184,10 +184,16 @@ secondSectionLinks.forEach(element=>{
 // add to cart mechanism
 
 
+
+
 let cart = {};
 let cartBtn = document.querySelector('.cart-btn button')
 
-getLocal('cart');
+let token = localStorage.getItem('token')
+
+if(token === 'true'){
+
+    getLocal('cart');
 
 cartBtn.addEventListener('click' , function(){
 
@@ -204,6 +210,9 @@ cartBtn.addEventListener('click' , function(){
     setLocal(cartStr)
 
 })
+}
+
+
 
 
 

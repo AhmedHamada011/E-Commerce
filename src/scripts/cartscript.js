@@ -84,9 +84,9 @@ function sumprice() {
     var restoredarray = JSON.parse(restored)
 
     var item = Object.values(restoredarray)
-
+  console.log(item);
     for (var i = 0; i < item.length; i++) {
-        sum = sum + item[i].price
+        sum = sum + Number.parseInt(item[i].price)*Number.parseInt(item[i].qty)
        
     
     }

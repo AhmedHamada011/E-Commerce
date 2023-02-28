@@ -1,9 +1,9 @@
 // check if token exists or not
 
 if(!localStorage.getItem('token')){
+
     localStorage.setItem('token' , 'false')
 }
-
 
 // check if user is logged using token if yes goto home page else login
 
@@ -30,10 +30,6 @@ export function getWomenProducts(){
     getProducts("womens-shoes","women-collapseThree",false)
     getProducts("womens-bags","women-collapseFour",false)
 }
-
-
-
-
 
 
 // check if user is logged using token if yes goto home page else login
@@ -64,6 +60,7 @@ function isLoggedIn(){
 export function addLogout_inButtons(){
     let desk_login_out=document.querySelector(".nav-main.d-none.d-md-flex >div >ul");
     let mob_login_out=document.querySelector(".offcanvas-body > ul .log-out")
+
     //if user is logged in show logout
     if(isLoggedIn()){
         desk_login_out.innerHTML+=`<li><button class="d-none d-md-block" id="nav-logOut"><i class="fa-solid fa-arrow-right-from-bracket"></i></button></li>`;
@@ -84,7 +81,6 @@ export function addLogout_inButtons(){
         desk_login_out.innerHTML+=`<li><button class="d-none d-md-block" id="nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i></button></li>`;
 
         document.querySelector(".navbar.nav-main.sticky-top ul.d-flex").innerHTML+=`<li><button id="mobile-nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i></button></li>`;
-
         
         document.getElementById("mobile-nav-login").addEventListener("click",function(){ // add event to log ou button
             location.href=location.origin+"/src/pages/loginpage.html"
@@ -93,10 +89,9 @@ export function addLogout_inButtons(){
         document.getElementById("nav-login").addEventListener("click",function(){ // add event to log ou button
             location.href=location.origin+"/src/pages/loginpage.html"
         })
-
     }
-
 }
+
 //log out the user when he clicks on log out button
 function logOut(){
     localStorage.setItem("token","false")
@@ -108,40 +103,34 @@ function getProducts(product,collapseId,isOpen){
     // let cardHolder=document.querySelector(`#accordionExample #${section} .accordion-body`)mid_section
     addAccordion(product,collapseId,isOpen)
 
-    // console.log("before",cardHolder);
-    // let link=`https://dummyjson.com/products/category/${product}`
     fetch(`https://dummyjson.com/products/category/${product}`)
     .then(res => 
         res.json() 
     )
     .then(res => {
-        // console.log(res);
-        res.products.forEach(element => {
-            addProductItem(element,collapseId)
-            // console.log(element.id)
-            sessionStorage.setItem(`${element.id}`,JSON.stringify(element))
+            res.products.forEach(element => {
 
-    })
+                addProductItem(element,collapseId)
+                sessionStorage.setItem(`${element.id}`,JSON.stringify(element))
+        })
 
     return res;
-}).then(res=>{
-    res.products.forEach(element=>{
+    }).then(res=>{
+        res.products.forEach(element=>{
         
-        addEventModal(element.id);
+            addEventModal(element.id);
 
     })
 }).then(()=>{
+
     if(localStorage.getItem("token")=="true"){
         document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
             btn.setAttribute("data-bs-target","#addedToCartModal")
             btn.setAttribute("data-bs-toggle","modal")
             btn.onclick =function(e){
                 let data=getProductId(this);
-                addToCart(data.id,data.qty)
-                
-                
-            }
-            
+                addToCart(data.id,data.qty)  
+            } 
         })
     }else{
         loginBeforeAddToCartModal();
@@ -151,11 +140,9 @@ function getProducts(product,collapseId,isOpen){
                 document.querySelector(".modal-login").addEventListener("click",function(){
                     location.href=location.origin+"/src/pages/loginpage.html"
                 })
-            
         })
     }
 })
-
 }
 
 //add accordion take product name collapse Id and is collapse open od closed
@@ -181,8 +168,8 @@ function addAccordion(product,collapseId,isOpen){
 
 //add products to accordion
 function addProductItem(element,collapseId){
-    let cardHolder=document.querySelector(`#${collapseId} .accordion-body`);
 
+    let cardHolder=document.querySelector(`#${collapseId} .accordion-body`);
     let card=
         `<div class="product p-1 d-flex align-items-stretch" id="${element.id}">
             <div class="card d-flex bg-light">
@@ -199,29 +186,20 @@ function addProductItem(element,collapseId){
                 </div>
             </div>
         </div>`
-        // console.log(document.querySelector(`.btn-${element.id}`));
         
         cardHolder.innerHTML+=card;
-        // console.log(document.querySelector(`.btn-${element.id}`));
         let item=document.querySelector(`.btn-${element.id}`);
 }
 
-
 function addEventModal(id){
+
     let product=document.querySelector(`.btn-${id}`);
-    // console.log(product);
 
     product.addEventListener("click",function(e){
-        // console.log("asdasdas",product);
-
-        // let id=product.closest(".product").id;
 
         let productDataObject=JSON.parse(sessionStorage.getItem(id));
 
-        console.log(productDataObject);
-        
         changeModalData(productDataObject)
-
 
         let carousel_indicator=document.querySelector(".carousel-indicators")
         let carousel_inner=document.querySelector(".carousel-inner")
@@ -243,18 +221,15 @@ function addEventModal(id){
         carousel_indicator.firstElementChild.classList.add("active")
         carousel_indicator.firstElementChild.setAttribute("aria-current","true")
 
-
     })
 
 }
 
-
-
 function changeModalData(productData){
+
     document.querySelector(".modal-title").innerText=productData.title;
     document.querySelector(".modal-id").innerText=`ID: ${productData.id}`;
     document.querySelector(".modal-id").setAttribute("data-id",productData.id);
-
     document.querySelector(".modal-price").innerText=`${productData.price} EGP`;
     document.querySelector(".modal-desc").innerText=`description: ${productData.description}`;
     document.querySelector(".modal-brand").innerText=`brand: ${productData.brand}`;
@@ -262,7 +237,6 @@ function changeModalData(productData){
     document.querySelector(".modal-stock").innerText=`in stock: ${productData.stock}`;
     document.querySelector(".modal-qty").value=1;
 }
-
 
 function getProductId(product){
     let id=product.closest(".product").querySelector(".product_id").getAttribute("data-id")
@@ -276,8 +250,7 @@ function getProductId(product){
 }
 
 function addToCart(id,qty){
-    // let counterBadge = document.querySelectorAll('.badge')
-    // console.log(id,qty);
+    
     let productData=JSON.parse( sessionStorage.getItem(id));
     let cart;
     if(!localStorage.getItem("cart")){
@@ -305,18 +278,17 @@ function setLocal(item){
     localStorage.setItem('cart' , item )
 }
 
-
 export function getLocal(){
 
     let counterBadge = document.querySelectorAll('.badge')
     let check = (localStorage.getItem('cart'));
 
     if(check){
+
         let itemsCount=0;
         let cart = JSON.parse(check);
         console.log(Object.values(cart));
         for(let item of Object.values(cart)){
-            // console.log(item["qty"]);
             itemsCount+=Number.parseInt(item.qty);
         }
         counterBadge.forEach(element=>{
@@ -344,5 +316,4 @@ function loginBeforeAddToCartModal(){
     </div>
   </div>`
   document.body.querySelector("script").insertAdjacentHTML("beforebegin",modal);
-
 }

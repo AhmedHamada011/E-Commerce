@@ -1,14 +1,11 @@
-
-
 //back to top button 
+
 let totopBtn = document.getElementById('totop');
 totopBtn.style.display = 'none' ;
-
 
 totopBtn.addEventListener('click' , function(){
     window.scrollTo( 0 , 0 )
 })
-
 
 window.addEventListener('scroll' , function(){
 
@@ -17,7 +14,6 @@ window.addEventListener('scroll' , function(){
 
 
 // contact form and links 
-
 
 let links = document.querySelectorAll('.home-pointer');
 
@@ -31,18 +27,18 @@ links.forEach(element=>{
 
         }else if(e.target === "callUs" ){
 
-
-
         }else{
 
-            getLocation();
-            
-        }
-        
+            getLocation();   
+        }  
     })
 })
 
+
+// function to get the store location from google maps
+
 function getLocation(){
+
     if(navigator.geolocation){
 
         navigator.geolocation.watchPosition(showPosition);
@@ -61,20 +57,16 @@ function showPosition(){
 }
 
 
-// form validation for messages
+// form validation for messages that user could send it from contact section
 
 let contactEmailInput = document.querySelector('#email-input');
 let contactForm = document.querySelector('#home-contact form')
 
 
-
 function emailValidation (value){
 
     let contactPattern = /(^\w+)([\.\-_]\w*)*?[@]([a-z]{1,})\.([a-z]{1,})/;
-    console.log(contactPattern.test(value))
-
     return contactPattern.test(value)
-
 
 }
 
@@ -89,8 +81,6 @@ contactForm.addEventListener('submit',function(e){
 
     }else{
 
-        console.log(checkmes.style.display )
-
         if(checkmes.style.display !== 'block'){
             checkmes.style.display === 'block';
             checkmes.innerText = "Please enter valid email"
@@ -99,8 +89,10 @@ contactForm.addEventListener('submit',function(e){
         e.preventDefault();
         
     }   
-    
 })
+
+
+// in sale section make hearts on imgs to add it to favorites
 
 let saleImgs = document.querySelectorAll('#home-sale div img');
 
@@ -152,6 +144,8 @@ saleImgs.forEach(element=>{
 })
 
 
+// link of ads section to thier hrefs
+
 let secondSectionLinks = document.querySelectorAll('.btn-origin')
 
 secondSectionLinks.forEach(element=>{
@@ -181,19 +175,21 @@ secondSectionLinks.forEach(element=>{
 
 
 
+
 // add to cart mechanism
-
-
-
 
 let cart = {};
 let cartBtn = document.querySelector('.cart-btn button')
-
 let token = localStorage.getItem('token')
+
+// check if user logged in or not
 
 if(token === 'true'){
 
     getLocal('cart');
+
+    cartBtn.removeAttribute('data-bs-toggle')
+    cartBtn.removeAttribute('data-bs-target')
 
 cartBtn.addEventListener('click' , function(){
 
@@ -202,20 +198,28 @@ cartBtn.addEventListener('click' , function(){
     let productImgModal = document.querySelector('.modal-body img').getAttribute('src');
     let productIdModal = document.querySelector('.modal-body div h6 span').innerText;
 
-    
-
     addToCart(productNameModal , productPriceModal , productImgModal , productIdModal);
 
     let cartStr = JSON.stringify(cart);
     setLocal(cartStr)
 
 })
+}else{
+
+    cartBtn.setAttribute('data-bs-toggle' , 'modal');
+    cartBtn.setAttribute('data-bs-target' , "#exampleModal" )
+
+    cartBtn.addEventListener('click' , function(){
+        let loginBtn = document.querySelector('#loginBtnHome')
+        loginBtn.addEventListener('click' , function(){
+            location.assign('./src/pages/loginpage.html')
+        })
+ 
+    })
+
 }
 
-
-
-
-
+// function add product details to object to be added in local storage to reuse it in cart page
 function addToCart(productName , productPrice , productImg , productId ){
 
     let counterBadge = document.querySelectorAll('.badge')
@@ -245,13 +249,14 @@ function addToCart(productName , productPrice , productImg , productId ){
 
 }
 
-
-
+// function set info to local storage
 function setLocal(value){
 
     localStorage.setItem('cart' , value )
 }
 
+
+// function to get info from local and set number of items added to cart
 function getLocal(value){
 
     let counterBadge = document.querySelectorAll('.badge')

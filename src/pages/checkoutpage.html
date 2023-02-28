@@ -12,10 +12,11 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../styles/checkoutpage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
 </head>
 
 <body onload="checkOutTotalPrice()">
-    <h1 class="col-12 text-center mt-5 text-success">Wear&Go</h1>
+    <h1 class="col-12 text-center mt-5 text-success"><a class="text-success text-decoration-none" href="../../index.html">Wear&Go</a></h1>
     <hr>
     <main class="container">
         <div class="row mt-3 d-flex">
@@ -191,16 +192,14 @@
             </aside>
         </div>
         <!-- Modal -->
-        <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        <div class="modal fade " id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content rounded-0">
-                    <div class="ms-2 my-2">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body px-5">
-                        <div class="row">
-                            <img class="text-center" src="../icon/check-mark-svgrepo-com.svg" height="100vh" alt="">
+                <div class="modal-content rounded-3">
+                    <div class="modal-body p-2">
+                        <div class="row py-3">
+                            <i class="fa-solid fa-square-check text-success text-center" style="font-size: 80px;"></i>
+                            <h1 class="text-center text-success pt-2">Done</h1>
                         </div>
                     </div>
                 </div>

@@ -137,9 +137,9 @@ function getProducts(product,collapseId,isOpen){
         document.querySelectorAll(".product-addtocart-btn").forEach(btn=>{
                 btn.setAttribute("data-bs-target","#warning-modal")
                 btn.setAttribute("data-bs-toggle","modal")
-                document.querySelector(".modal-login").addEventListener("click",function(){
+                document.querySelector(".modal-login").onclick=function(){
                     location.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/src/pages/loginpage.html"
-                })
+                }
         })
     }
 })

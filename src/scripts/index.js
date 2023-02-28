@@ -199,7 +199,9 @@ cartBtn.addEventListener('click' , function(){
     let productNameModal = document.querySelector('.modal-body div h4').innerText;
     let productPriceModal = document.querySelector('.modal-body div h5').innerText;
     let productImgModal = document.querySelector('.modal-body img').getAttribute('src');
-    productImgModal = location.origin  + productImgModal ;
+
+    productImgModal = productImgModal.replace(/^(src)/, '..');
+
     let productIdModal = document.querySelector('.modal-body div h6 span').innerText;
 
     addToCart(productNameModal , productPriceModal , productImgModal , productIdModal);

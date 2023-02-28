@@ -38,16 +38,16 @@ function isLoggedIn(){
     getLocal()
 
         if(location.href.endsWith("signuppage.html") || (location.href.endsWith("loginpage.html"))){
-            location.href=location.origin+"/index.html" //important change to index.html after index.html is created
+            location.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/index.html" //important change to index.html after index.html is created
         }
         return true;
     }else{
-        document.querySelector("nav .fa-cart-shopping").parentElement.href=location.origin+"/src/pages/loginpage.html"
+        document.querySelector("nav .fa-cart-shopping").parentElement.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/src/pages/loginpage.html"
 
         // document.querySelector("nav .fa-cart-shopping").parentElement.setAttribute("onclick","event.preventDefault()")
         if(location.href.endsWith("cartpage.html")){
 
-            location.href=location.origin+"/src/pages/loginpage.html" //important change to index.html after index.html is created
+            location.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/src/pages/loginpage.html" //important change to index.html after index.html is created
         }
     return false;
 
@@ -83,11 +83,11 @@ export function addLogout_inButtons(){
         document.querySelector(".navbar.nav-main.sticky-top ul.d-flex").innerHTML+=`<li><button id="mobile-nav-login"><i class="fa-solid fa-arrow-right-to-bracket mx-0 me-1"></i></button></li>`;
         
         document.getElementById("mobile-nav-login").addEventListener("click",function(){ // add event to log ou button
-            location.href=location.origin+"/src/pages/loginpage.html"
+            location.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/src/pages/loginpage.html"
         })
 
         document.getElementById("nav-login").addEventListener("click",function(){ // add event to log ou button
-            location.href=location.origin+"/src/pages/loginpage.html"
+            location.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/src/pages/loginpage.html"
         })
     }
 }
@@ -95,7 +95,7 @@ export function addLogout_inButtons(){
 //log out the user when he clicks on log out button
 function logOut(){
     localStorage.setItem("token","false")
-    location.href=location.origin+"/index.html" //important change to index.html after index.html is created
+    location.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/index.html" //important change to index.html after index.html is created
 }
 //get proucts from api and adds it to page
 function getProducts(product,collapseId,isOpen){
@@ -138,7 +138,7 @@ function getProducts(product,collapseId,isOpen){
                 btn.setAttribute("data-bs-target","#warning-modal")
                 btn.setAttribute("data-bs-toggle","modal")
                 document.querySelector(".modal-login").addEventListener("click",function(){
-                    location.href=location.origin+"/src/pages/loginpage.html"
+                    location.href=location.origin+(location.pathname.startsWith("/E-Commerce")?"/E-Commerce":"")+"/src/pages/loginpage.html"
                 })
         })
     }

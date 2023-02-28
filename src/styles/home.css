@@ -125,3 +125,7 @@
     cursor: pointer;
     object-fit: cover;
 }
+
+.disapear{
+    display: none;
+}

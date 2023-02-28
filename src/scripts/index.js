@@ -181,15 +181,17 @@ secondSectionLinks.forEach(element=>{
 let cart = {};
 let cartBtn = document.querySelector('.cart-btn button')
 let token = localStorage.getItem('token')
+let modalBody = document.querySelector('#exampleModal .modal-body')
+let modalFooter = document.querySelector('#exampleModal .modal-footer')
 
 // check if user logged in or not
+
+cartBtn.setAttribute('data-bs-toggle' , 'modal');
+cartBtn.setAttribute('data-bs-target' , "#exampleModal" )
 
 if(token === 'true'){
 
     getLocal('cart');
-
-    cartBtn.removeAttribute('data-bs-toggle')
-    cartBtn.removeAttribute('data-bs-target')
 
 cartBtn.addEventListener('click' , function(){
 
@@ -203,12 +205,15 @@ cartBtn.addEventListener('click' , function(){
     let cartStr = JSON.stringify(cart);
     setLocal(cartStr)
 
+    modalFooter.classList.add('disapear')
+    modalBody.innerHTML = 'added to cart <i class="fa-solid fa-circle-check text-success ms-2"></i>';
+    
+
 })
 }else{
 
-    cartBtn.setAttribute('data-bs-toggle' , 'modal');
-    cartBtn.setAttribute('data-bs-target' , "#exampleModal" )
-
+    modalFooter.classList.remove('disapear')
+    modalBody.innerText = 'login first before adding items to cart'
     cartBtn.addEventListener('click' , function(){
         let loginBtn = document.querySelector('#loginBtnHome')
         loginBtn.addEventListener('click' , function(){

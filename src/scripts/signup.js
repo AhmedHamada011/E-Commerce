@@ -5,7 +5,6 @@
         const repeatPass = document.getElementById('floatingRepeatPassword')
         const UserName = document.getElementById('floatingUsername')
         const email=document.getElementById("floatingInputEmail")
-
         
         //check email validation using regex
         email.addEventListener("input",function(){
@@ -32,7 +31,6 @@
         //check form validation if success put data in localstorage and go to login page
 
         form.addEventListener('submit',function( event ) {
-            // console.log(form.checkValidity());
             checkAllInputValidation()
             if (!form.checkValidity()) {
                 event.preventDefault()
@@ -51,13 +49,12 @@
             if(repeatPass.value==''){
                 repeatPass.setCustomValidity("notValid")
             }
-
         }
 
         //check inputs validation using regex
         function checkInputValidation(regex,element){
             const reg=new RegExp(regex)
-            // console.log("validity test ,",element.value,reg.test(element.value));
+            
             if(!reg.test(element.value)){
                 element.setCustomValidity("notValid")
             }else{

@@ -22,3 +22,8 @@
 - [Mahmoud Basiouny](https://github.com/mahmoud-elbasiony)
 - [Mohammed Yousef](https://github.com/Mohamedyousef44)
 - [Omar Alaa](https://github.com/omar1896)
+
+## Promo video
+
+[![Wear & Go E-Commerce Project](https://img.youtube.com/vi/ITJEobeLRqI/0.jpg)](https://www.youtube.com/watch?v=ITJEobeLRqI "Wear & Go E-Commerce Project
+")

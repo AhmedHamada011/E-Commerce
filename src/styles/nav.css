@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Julee&display=swap');
+
+.nav-top-background {
+    background-color: #212934;
+}
+
+
+
+.nav-main {
+    background-color: #EFEFEF;
+}
+
+.nav-e-commerce-icon {
+    text-decoration: none;
+    color: #59AB6E;
+    font-family: "Roboto",sans-serif;
+}
+
+.nav-main ul a {
+    text-decoration: none;
+    color: #212934;
+}
+
+.nav-main ul a:hover {
+    text-decoration: none;
+    color: rgb(10, 168, 10);
+}
+
+.nav-mobile-icon {
+    font-size: 5vh;
+    color: rgb(10, 168, 10) !important; 
+}
+
+ul {
+    list-style: none;
+}
+
+#nav-logOut,#mobile-nav-logOut,#nav-login,#mobile-nav-login{
+    background:transparent; 
+    border:none;    
+}
+#nav-logOut:hover *,#mobile-nav-logOut:hover *{
+    color: red !important; 
+}
+
+#nav-login:hover  *,#mobile-nav-login:hover *{
+    color: rgb(10, 168, 10) !important; 
+}

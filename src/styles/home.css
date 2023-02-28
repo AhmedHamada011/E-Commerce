@@ -1,0 +1,131 @@
+.custom-item{
+
+    height: 85vh;
+
+}
+
+.custom-img{
+
+    height: 100%;
+    /* aspect-ratio: 3/2; */
+    object-fit:cover;
+    filter: brightness(.5);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.custom-img:hover{
+
+   transform: scale(1.2);
+}
+
+.btn-origin{
+
+    border-style: none;
+    cursor: pointer;
+    height: 40px;
+    background-color: #EFEFEF;
+    
+}
+
+.btn-origin:hover{
+    height: 40px;
+    color: #EFEFEF;
+    background-color: #252525;
+}
+
+
+.custom-container{
+    height: 100vh;
+}
+
+.img-modifier{
+
+    height: 100%;
+    object-fit:cover;
+    cursor: pointer;
+
+}
+
+.btn-totop{
+    background-color: #59AB6E ;
+    width: 40px;
+    height: 40px;
+    border-style: none;
+    cursor: pointer;
+}
+
+.bg-zay{
+    background-color: #EFEFEF;
+}
+
+.home-fs-m{
+    font-size: 0.9rem;
+}
+
+.home-pointer{
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.home-pointer:hover{
+    transform: scale(1.05);
+}
+
+.sale-imgs{
+    width: 100%;
+    aspect-ratio: 2/3;
+    cursor: pointer;
+    object-fit: cover;
+
+}
+
+
+
+.ratings i{
+    color: #ffd513;
+    cursor: pointer;
+}
+.ratings .grey{
+    color: #ccc;
+}
+
+
+.heart{
+    display: none;
+    position: absolute;
+    top: 2%;
+    right: 8%;
+    font-size: 1.5rem ;
+    color: #cecece; 
+    cursor: pointer; 
+}
+
+.apper{
+    display: block;
+}
+
+.heart-color{
+    color: red;
+}
+
+.colorful{
+    animation: colored .4s infinite alternate ease-in-out;
+}
+
+@keyframes colored{
+    from{
+        color: red;
+    }
+}
+
+.modal-home-img{
+    width: 80%;
+    aspect-ratio: 2/3;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.disapear{
+    display: none;
+}

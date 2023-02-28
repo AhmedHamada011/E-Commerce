@@ -1,0 +1,25 @@
+.footer-outer-container{
+  background-color: #212934;
+}
+
+.text-light{
+  color: #cfd6e1!important;
+}
+.footer-icons-social li:hover {
+  background-color: #cfd6e1;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.footer-icons-social li:hover *{
+  color: #212934;
+  transition: .5s;
+}
+
+.border-light {
+  border-color: #2d343f!important;
+}
+
+.bg-dark {
+  background-color: #212934!important;
+}

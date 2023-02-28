@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nav</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/checkoutpage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
+</head>
+
+<body onload="checkOutTotalPrice()">
+    <h1 class="col-12 text-center mt-5 text-success"><a class="text-success text-decoration-none" href="../../index.html">Wear&Go</a></h1>
+    <hr>
+    <main class="container">
+        <div class="row mt-3 d-flex">
+            <section class="row col-12 col-md-5 offset-0 offset-md-1 order-1 order-md-0">
+                <div class="d-flex flex-column">
+                    <span class="fw-bolder h5 mt-2 mt-md-0">Delivery Method</span>
+                    <label for="home-shping" class="d-flex align-content-center bg-white gap-3 mt-2">
+                        <input id="home-delivery" class="ms-3" type="radio" name="shping" value="">
+                        <i class="fas fa-truck align-self-center"></i>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bolder">Delivery</span>
+                            <span>Free delivery on all orders</span>
+                        </div>
+                    </label>
+                    <label for="from-shop" class="d-flex align-content-center bg-white gap-3 mt-2">
+                        <input class="ms-3" type="radio" name="shping" value="" disabled>
+                        <i class="fas fa-map-marked align-self-center"></i>
+                        <div class="d-flex flex-column">
+                            <span id="open-map" class="fw-bolder">Click & Collect</span>
+                            <span>Collect your order in-store, unavailable</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="mt-5">
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="flush-headingOne">
+                                <button id="personal-info" class="accordion-button collapsed fw-bolder h5" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    Delivery information
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <form onsubmit="return false;" class="row g-3">
+                                        <div class="form-floating mb-3">
+                                            <input id="getFullName" type="email" class="form-control" id="floatingInput"
+                                                placeholder="name@example.com">
+                                            <label for="floatingInput">Full Name</label>
+                                            <span class="invalid-text d-none">You can't use numbers or symbols</span>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input id="getEmail" type="email" class="form-control" id="floatingInput"
+                                                placeholder="name@example.com">
+                                            <label for="floatingInput">Email address</label>
+                                            <span class="invalid-text d-none">invalid email address</span>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text">02</span>
+                                            <div class="form-floating">
+                                                <input id="getPhone" type="text" class="form-control"
+                                                    id="floatingInputGroup1" placeholder="Phone number">
+                                                <label for="floatingInputGroup1">Phone</label>
+                                                <span class="invalid-text d-none">Phone must be all numbers</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input id="getLandMark" type="text" class="form-control" id="floatingInput"
+                                                placeholder="">
+                                            <label for="floatingInput">Landmark - Optional</label>
+                                        </div>
+                                        <div class="col-md-4 col-12 form-floating mb-3">
+                                            <input id="getCity" type="email" class="form-control" id="floatingInput"
+                                                placeholder="City">
+                                            <label for="floatingInput">City</label>
+                                            <span class="invalid-text d-none">You need to fill this option</span>
+                                        </div>
+                                        <div class="col-md-4 col-12 form-floating mb-3">
+                                            <input id="getRegion" type="email" class="form-control" id="floatingInput"
+                                                placeholder="">
+                                            <label for="floatingInput">Region</label>
+                                            <span class="invalid-text d-none">You need to fill this option</span>
+                                        </div>
+                                        <div class="form-floating col-md-3">
+                                            <input id="zips" type="text" class="form-control" id="floatingInput"
+                                                placeholder="">
+                                            <label for="floatingInput">Zip</label>
+                                            <span class="invalid-text d-none">You need to fill this option</span>
+                                        </div>
+                                        <div class="col-12 d-grid gap-2 mb-2">
+                                            <button id="save" type="submit"
+                                                class="btn bg-black text-white">SAVE</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white d-flex flex-row justify-content-between d-none" id="showAllPersonalInfo">
+                        <div class="d-flex flex-column align-content-center m-3">
+                            <span id="putFullName" class="fw-bold h6 flex-grow-1">Ahmed Mohamed Zein</span>
+                            <span id="Email-phone-city-region" class="text-muted">ahmedzain503@gmail, 01120273779,
+                                Alexandria, sidibsher</span>
+                        </div>
+                        <button id="change" type="button" class="btn btn-danger">Change</button>
+                    </div>
+                    <div id="done-personal-data" class="bg-white d-none">
+                        <div class="d-flex m-3">
+                            <div class="d-flex flex-column flex-grow-1">
+                                <span class="fw-bolder h6">Standard Delivery</span>
+                                <p>Your order will be delivered within 1-5 days</p>
+                            </div>
+                            <span class="fw-bold">FREE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <span class="fw-bolder h5">Payment Methods</span>
+                    <div class="bg-white fw-bold">
+                        <div class="d-flex align-items-baseline gap-3 m-3">
+                            <input id="credit" class="" type="radio" value="" name="payment">
+                            <label for="credit" class="flex-grow-1">
+                                Credit / Debit Card
+                            </label>
+                            <i class="fa-regular fa-credit-card"></i>
+                        </div>
+                        <div class="d-none" id="card-display">
+                            <div class="form-floating mb-3 offset-1 col-8">
+                                <input type="text" class="form-control input-border-bottom" id="floatingInput"
+                                    placeholder="">
+                                <label for="floatingInput" class="text-muted">Card Number</label>
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-floating mb-3 offset-1 col-4">
+                                    <input type="text" class="form-control input-border-bottom" id="floatingInput"
+                                        placeholder="">
+                                    <label for="floatingInput" class="text-muted">Expiry</label>
+                                </div>
+                                <div class="form-floating mb-3 offset-1 col-4">
+                                    <input type="text" class="form-control input-border-bottom" id="floatingInput"
+                                        placeholder="">
+                                    <label for="floatingInput" class="text-muted">CVV</label>
+                                </div>
+                            </div>
+                            <div class="offset-1">
+                                <img height="35vh" src="../icon/images.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white fw-bold">
+                        <div class="d-flex align-items-baseline gap-3 m-3">
+                            <input id="cash" class="" type="radio" value="" name="payment">
+                            <label for="Cash" class="flex-grow-1">
+                                Cash on Delivery
+                            </label>
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="fw-bolder h6 mt-5">
+                    I confirm that I have read and accept the <a href="#" target="_blank" class="text-black">Privacy
+                        Policy</a> and <a href="#" target="_blank" class="text-black">Terms &amp; Conditions</a> of
+                    purchase, read our <a href="#" class="text-black">Return&nbsp;</a>Policy.
+                </p>
+                <div class="d-grid mt-4 mb-5">
+                    <button id="COMPLETE-PURCHASE" class="btn bg-black fw-bold text-white" type="button"
+                        data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>COMPLETE PURCHASE</button>
+                </div>
+            </section>
+            <aside class="row m-0 col-12 col-md-6 offset-1 d-flex flex-column  order-0 order-md-1">
+                <div class="d-flex justify-content-between bg-white">
+                    <div class="d-flex flex-column">
+                        <span class="fw-bold h5 flex-grow-1">Order total</span>
+                        <span class="text-muted h6">Excluding delivery</span>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <span id="CheckOut-Total-Cost" class="fw-bold h6">EGP 999.00</span>
+                        <span class="text-muted h6">Inclusive of VAT</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade " id="staticBackdrop" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content rounded-3">
+                    <div class="modal-body p-2">
+                        <div class="row py-3">
+                            <i class="fa-solid fa-square-check text-success text-center" style="font-size: 80px;"></i>
+                            <h1 class="text-center text-success pt-2">Done</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+<script src="../scripts/checkout.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+
+</html>

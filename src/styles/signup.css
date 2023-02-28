@@ -1,0 +1,25 @@
+:root{
+    --light:rgb(239, 239, 239);
+    --dark:rgb(33, 41, 52);
+    --green:rgb(89, 171, 110);
+    --light2:rgb(233, 238, 245);
+    
+    
+}
+
+.signup.container{
+    max-width: 600px;
+    background-color: var(--light);
+}
+
+.signup-login a{
+    text-decoration: none;
+}
+.signup-login-btn{
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+
+
+

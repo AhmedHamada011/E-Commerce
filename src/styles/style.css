@@ -1,0 +1,15 @@
+
+@import "footer.css";
+@import "nav.css";
+@import "signup.css";
+@import "login.css";
+@import "home.css";
+@import "products.css";
+
+  *{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100&display=swap');
+

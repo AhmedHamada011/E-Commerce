@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-12">
+            <div class="container">
+              <div class="row">
+                <h2 class="col-12">Your shopping cart</h2>
+                <hr />
+              </div>
+            </div>
+            <!--/product card///////////////////////////////////////////////////-->
+            <div class="container-fluid">
+              <div class="container-fluid pt-2">
+                <div class="row col-12 bg-dark-subtle rounded py-3">
+                  <div class="col-md-4 col-sm-12">
+                    <img
+                      src="..\icon\boys-ltc.jpg"
+                      alt=""
+                      id="cart_image_product"
+                      width="175"
+                      height="250"
+                      style="background-color: aqua; border-radius: 10px"
+                    />
+                  </div>
+                  <!------   product  description     -->
+                  <!------     description  and price    -->
+                  <div
+                    class="container-fluid col-sm-12 col-lg-8 pt-2"
+                    id="cart_describtion"
+                  >
+                    <div class="row col-12">
+                      <h4 class="col-sm-12 col-md-8">
+                        Medium size children pejama
+                      </h4>
+                      <h5
+                        id="cart_price"
+                        class="col-md-4 text-end fw-bold text-decoration-underline"
+                      >
+                        EGP 128.5
+                      </h5>
+                      <p class="col-sm-12 fw-light" id="cart product color">
+                        color : green
+                      </p>
+                      <p class="col-sm-12 fw-light" id="cart_product_id">
+                        id : 111
+                      </p>
+                      <p class="col-sm-12 fw-light" id="cart_product_size">
+                        size : Medium children pejama
+                      </p>
+                      <hr
+                        class="border border-dark-subtle border-2 opacity-75"
+                      />
+                    </div>
+                    <!------     description  and price    -->
+
+                    <div class="row col-12">
+                      <div class="col-md-10 col-sm-12">
+                        <button type="button" class="btn btn-link">
+                          Add to favourits
+                        </button>
+                      </div>
+                      <div class="col-md-2 col-sm-12">
+                        <button
+                          type="button"
+                          class="btn btn-outline-secondary"
+                        ></button>
+                      </div>
+                    </div>
+                  </div>
+                  <!------   product  description     -->
+                </div>
+              </div>
+            </div>
+            <!--/product card///////////////////////////////////////////////////-->
+            <hr />
+            <!--*******************************************ads***************************************-->
+            <div class="fw-bold row col-12" id="comments">
+              <h3 style="text-align: center">you might also like</h3>
+            </div>
+            <div
+              id="carouselExampleSlidesOnly"
+              class="carousel slide"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="..\icon\1.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="..\icon\2.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="..\icon\1.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+              </div>
+            </div>
+            <!--*******************************************ads***************************************-->
+          </div>
+          <!--*******************************************items***************************************-->
+
+          <!--**********************************************************the side dive******************************************************-->
+
+          <aside class="row col-md-4 col-sm-12 bg-light rounded mt-2">
+            <div class="container pt-3 col-12 ms-2">
+              <div class="row">
+                <!--*******************************************************ordersummary*************************************************-->
+                <div class="row col-12">
+                  <img
+                    src="..\icon/a.svg"
+                    alt="Logo"
+                    height=""
+                    style="border-radius: 25px"
+                    class="col-4"
+                  />
+                  <h4
+                    class="text-dark col-sm-12 col-md-8 mt-2 pt-3"
+                    id="archieve"
+                  >
+                    Order Summary
+                  </h4>
+                  <hr class="border border-dark-subtle border-3 opacity-75" />
+
+                  <div
+                    class="row col-md-10 pt-3 rounded bg-dark-subtle bg-gradient offset-md-1 col-sm-10 offset-sm-1"
+                    id="cart_order_total_price"
+                  >
+                    <p class="col-6 fw-semibold">Order Total</p>
+                    <span class="col-6">EGP 500.00</span>
+                    <p class="col-6 fw-semibold">Discount</p>
+                    <span class="col-6">EGP -50</span>
+                    <hr />
+                    <p class="col-6 fw-semibold">Total</p>
+                    <span class="col-6">EGP 450.00</span>
+                  </div>
+                </div>
+                <!--*******************************************************ordersummary*************************************************-->
+
+                <!--************************************************************promocode*********************************************************-->
+                <div class="row bg-light col-12 mt-2 pt-3">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Add Promocode"
+                      aria-label="Recipient's username"
+                      aria-describedby="button-addon2"
+                    />
+                    <button
+                      class="btn btn-outline-secondary"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      Add
+                    </button>
+                  </div>
+                </div>
+                <!--**************************************************************promocode*********************************************************-->
+                <div class="d-grid gap-2 pt-5 col-11">
+                  <button class="btn btn-primary" type="button" id="Checkout">
+                    Checkout
+                  </button>
+                </div>
+                <div class="col-12 pt-2">
+                  <p class="col-md-10 mx-4 col-sm-12">
+                    Checkout quickly and securely with
+                  </p>
+                  <img
+                    src="..\icon\images.png"
+                    alt=""
+                    width="300"
+                  />
+                </div>
+              </div>
+              <div id="carttotalordersummary"></div>
+            </div>
+          </aside>
+          <!--**********************************************************the side div******************************************************-->
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..\icon\t3.webp" class="img-fluid rounded-start" alt="itemimag">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        
+        <h5 class="card-title">Basic t-shirts</h5>
+        <p class="card-text m-0">color red</p>
+        <p class="card-text m-0">id:111</p>
+        <p class="card-text m-0">size:medium</p>
+        <p class="card-text m-0"><strong>price:55</strong></p>
+
+        <hr>
+        <div class="row col-12">
+          <div class="col-md-10 col-sm-12">
+            <button type="button" class="btn btn-link">
+              Add to favourits
+            </button>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <button type="button" class="btn btn-outline-secondary delete">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..\icon\t2.webp" class="img-fluid rounded-start" alt="itemimag">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Basic t-shirts</h5>
+        <p class="card-text m-0">color red</p>
+        <p class="card-text m-0">id:111</p>
+        <p class="card-text m-0">size:medium</p>
+
+        <hr>
+        <div class="row col-12">
+          <div class="col-md-10 col-sm-12">
+            <button type="button" class="btn btn-link">
+              Add to favourits
+            </button>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <button type="button" class="btn btn-outline-secondary delete">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+function restorefunction() {
+
+    sumprice()
+
+    let restored = localStorage.getItem("cart")
+    var restoredarray = JSON.parse(restored)
+var checkarray=Object.values(restoredarray)
+if(checkarray.length==0)
+{        itemscontainer.innerHTML = "<h3 class='text-center bg-dark-subtle'>Your cart is empty</h3>"
+}else{
+
+
+    for (var item of Object.values(restoredarray)) {
+
+     //   console.log(item.name)
+
+
+        var itemscontainerdocument = document.getElementById("itemscontainer")
+
+        // mainDiv.insertAdjacentHTML('afterbegin', '<p>This is paragraph two.</p>');
+        itemscontainerdocument.insertAdjacentHTML('afterbegin', `<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;">
+ <div class="row g-0">
+   <div class="col-md-4">
+     <img src=${item.src} class="img-fluid rounded-start" alt="itemimag" >
+   </div>
+   <div class="col-md-8">
+     <div class="card-body productitem">
+       <h5 class="card-title"> ${item.name}</h5>
+       
+       <p class="card-text m-0 productid" id="item-${item.id}">${item.id}</p>
+       
+       <p class="card-text m-0">price:${item.price}</p>
+       <p class="card-text m-0"> quantity:${item.qty}</p>
+       <hr>
+       <div class="row col-12">
+         <div class="col-md-10 col-sm-12">
+           <button type="button" class="btn btn-link">
+             Add to favourits
+           </button>
+         </div>
+         <div class="col-md-2 col-sm-12">
+           <button type="button" class="btn btn-outline-secondary delete">
+             <i class="fa-solid fa-trash"></i>
+           </button>
+         </div>
+       </div>
+       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+     </div>
+   </div>
+ </div>
+</div>`)
+        // var innerdiv=
+        // const node = document.createTextNode(innerdiv);
+        // para.appendChild(node);
+
+        //   itemscontainerdocument.innerHTML='<div class="card mb-3 bg-dark-subtle" style="max-width: 540px;"><div class="row g-0"><div class="col-md-4"><img src="..\icon\t2.webp" class="img-fluid rounded-start" alt="itemimag"> </div><div class="col-md-8"> <div class="card-body"><h5 class="card-title">Basic t-shirts</h5> <p class="card-text m-0">color red</p> <p class="card-text m-0">`${(varrestoredarray[0].id}`</p> <p class="card-text m-0">size:medium</p><hr><div class="row col-12"><div class="col-md-10 col-sm-12"><button type="button" class="btn btn-link">Add to favourits  </button></div><div class="col-md-2 col-sm-12"><button type="button" class="btn btn-outline-secondary delete"><i class="fa-solid fa-trash"></i></button></div></div><p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p></div></div></div>/div>'
+        //   itemscontainerdocument.append(JSON.parse(innerdiv))
+    }
+}
+}

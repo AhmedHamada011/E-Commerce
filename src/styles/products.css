@@ -1,0 +1,8 @@
+div.accordion-item > h2:nth-child(1) > button::after{
+    color: white !important;
+}
+
+.product-modal-btn{
+    border: none;
+    background: transparent;
+}

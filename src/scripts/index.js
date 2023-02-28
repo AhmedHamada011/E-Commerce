@@ -1,5 +1,6 @@
 //back to top button 
 
+console.log(location.origin)
 let totopBtn = document.getElementById('totop');
 totopBtn.style.display = 'none' ;
 
@@ -150,7 +151,7 @@ let secondSectionLinks = document.querySelectorAll('.btn-origin')
 
 secondSectionLinks.forEach(element=>{
     element.addEventListener('click' , function(){
-        location.assign('http://127.0.0.1:5500/src/pages/mensectionpage.html')
+        location.assign( location.origin +'/src/pages/mensectionpage.html')
     })
 })
 
@@ -198,6 +199,7 @@ cartBtn.addEventListener('click' , function(){
     let productNameModal = document.querySelector('.modal-body div h4').innerText;
     let productPriceModal = document.querySelector('.modal-body div h5').innerText;
     let productImgModal = document.querySelector('.modal-body img').getAttribute('src');
+    productImgModal = location.origin  + productImgModal ;
     let productIdModal = document.querySelector('.modal-body div h6 span').innerText;
 
     addToCart(productNameModal , productPriceModal , productImgModal , productIdModal);

@@ -157,9 +157,10 @@ secondSectionLinks.forEach(element=>{
             let href = location.pathname.replace('/index.html',"")
 
             location.assign(href + '/src/pages/mensectionpage.html')
+        }else{
+            location.assign('/src/pages/mensectionpage.html')
         }
         
-        location.assign('/src/pages/mensectionpage.html')
 
     })
 })

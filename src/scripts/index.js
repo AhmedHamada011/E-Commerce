@@ -154,7 +154,7 @@ secondSectionLinks.forEach(element=>{
 
         if(location.href.includes('/index.html')){
 
-            let href = location.href.replace('/index.html',"")
+            let href = location.pathname.replace('/index.html',"")
 
             location.assign(href + '/src/pages/mensectionpage.html')
         }

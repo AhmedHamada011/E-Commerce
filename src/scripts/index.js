@@ -160,6 +160,7 @@ secondSectionLinks.forEach(element=>{
         }
         
         location.assign('/src/pages/mensectionpage.html')
+
     })
 })
 

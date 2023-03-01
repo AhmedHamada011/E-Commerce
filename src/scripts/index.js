@@ -151,7 +151,7 @@ let secondSectionLinks = document.querySelectorAll('.btn-origin')
 
 secondSectionLinks.forEach(element=>{
     element.addEventListener('click' , function(){
-        location.assign( location.origin +'/src/pages/mensectionpage.html')
+        location.assign('/src/pages/mensectionpage.html')
     })
 })
 

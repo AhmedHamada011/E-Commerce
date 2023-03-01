@@ -151,6 +151,14 @@ let secondSectionLinks = document.querySelectorAll('.btn-origin')
 
 secondSectionLinks.forEach(element=>{
     element.addEventListener('click' , function(){
+
+        if(location.href.includes('/index.html')){
+
+            let href = location.href.replace('/index.html',"")
+
+            location.assign(href + '/src/pages/mensectionpage.html')
+        }
+        
         location.assign('/src/pages/mensectionpage.html')
     })
 })

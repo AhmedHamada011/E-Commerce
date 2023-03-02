@@ -23,9 +23,6 @@ let saveFlag = false;
 
 //Functions
 
-function changeFlag1 () {
-    //anything
-}
 
 function savePersonalData () {
     personalInfo.setAttribute("aria-expanded",false);
@@ -73,10 +70,6 @@ function checkSaveInfoButton () {
     }
 }
 
-
-function openThisMap () {
-    //Open map
-}
 
 function validationFullName () {
     let regex = /[0-9]/g
@@ -140,8 +133,6 @@ function checkOutTotalPrice() {
 }
 //Events
 
-homeDelivery.addEventListener('click' , changeFlag1 );
-openMap.addEventListener('click', openThisMap);
 personalInfoSave.addEventListener('click', savePersonalData);
 changePersonalData.addEventListener('click', reset);
 creditRadio.addEventListener('click', showCredit);
